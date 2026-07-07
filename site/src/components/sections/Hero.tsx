@@ -109,14 +109,14 @@ export default function Hero({
           </div>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            <Link
+            <a
               href="/curriculo-luiz-amorim.pdf"
               download
               className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
             >
               <Download className="h-4 w-4" />
               Baixar Currículo
-            </Link>
+            </a>
             <Link
               href={linkedinUrl}
               target="_blank"
