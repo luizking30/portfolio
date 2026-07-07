@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Rocket, Lock, ExternalLink, Bot, MessageSquare, Link2, Brain } from "lucide-react";
+import { Rocket, Lock, ExternalLink } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
 interface ProductionProject {
@@ -10,7 +10,6 @@ interface ProductionProject {
   gradient: string;
   image?: string;
   techs: string[];
-  features: { icon: typeof Bot; label: string }[];
 }
 
 const projects: ProductionProject[] = [
@@ -18,17 +17,10 @@ const projects: ProductionProject[] = [
     name: "SharkGestão",
     url: "https://www.sharkgestao.com/",
     description:
-      "Sistema para afiliados que escuta mensagens de ofertas recebidas via WhatsApp e Telegram dos grupos do usuário, troca o link de afiliado (Mercado Livre, Shopee, Amazon e outros) pelo link cadastrado no sistema e responde nos grupos selecionados.",
+      "Automação para afiliados: troca links de ofertas via WhatsApp e Telegram, com link-in-bio e IA integrada.",
     gradient: "from-blue-500 via-cyan-500 to-teal-500",
     image: "/logopromobot.webp",
     techs: ["WhatsApp API", "Telegram API", "Evolution API", "IA"],
-    features: [
-      { icon: MessageSquare, label: "Escuta ofertas via WhatsApp e Telegram" },
-      { icon: Link2, label: "Troca automática de links de afiliado" },
-      { icon: Bot, label: "Resposta automática em grupos selecionados" },
-      { icon: Link2, label: "Link-in-bio com todos os links em uma página" },
-      { icon: Brain, label: "IA para auxiliar o usuário" },
-    ],
   },
   {
     name: "Em breve",
@@ -36,7 +28,6 @@ const projects: ProductionProject[] = [
     description: "Novo projeto em produção em breve.",
     gradient: "from-slate-400 to-slate-600",
     techs: [],
-    features: [],
   },
   {
     name: "Em breve",
@@ -44,7 +35,6 @@ const projects: ProductionProject[] = [
     description: "Novo projeto em produção em breve.",
     gradient: "from-slate-400 to-slate-600",
     techs: [],
-    features: [],
   },
   {
     name: "Em breve",
@@ -52,7 +42,6 @@ const projects: ProductionProject[] = [
     description: "Novo projeto em produção em breve.",
     gradient: "from-slate-400 to-slate-600",
     techs: [],
-    features: [],
   },
 ];
 
@@ -108,7 +97,7 @@ export default function ProductionProjects() {
                 </div>
 
                 <div className="flex flex-1 flex-col justify-between p-5">
-                  <p className="mb-4 line-clamp-4 text-sm text-slate-600 dark:text-slate-300">
+                  <p className="mb-4 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">
                     {project.description}
                   </p>
 
@@ -121,17 +110,6 @@ export default function ProductionProjects() {
                         >
                           {tech}
                         </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {project.features.length > 0 && (
-                    <div className="mb-4 space-y-1.5">
-                      {project.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                          <feature.icon className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
-                          <span className="line-clamp-1">{feature.label}</span>
-                        </div>
                       ))}
                     </div>
                   )}
