@@ -23,11 +23,12 @@ const projects: ProductionProject[] = [
     techs: ["WhatsApp API", "Telegram API", "Evolution API", "IA"],
   },
   {
-    name: "Em breve",
-    url: "",
-    description: "Novo projeto em produção em breve.",
-    gradient: "from-slate-400 to-slate-600",
-    techs: [],
+    name: "SharkGestão ERP",
+    url: "https://www.sharkgestao.com/",
+    description:
+      "ERP SaaS para assistência técnica e lojas de informática: estoque, PDV, OS, clientes, relatórios e etiquetas.",
+    gradient: "from-indigo-500 via-blue-500 to-cyan-500",
+    techs: ["ERP", "PDV", "Evolution API", "SaaS"],
   },
   {
     name: "Em breve",
