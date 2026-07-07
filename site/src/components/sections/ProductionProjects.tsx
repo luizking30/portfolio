@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Rocket, Lock, ExternalLink } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import SpotlightCard from "@/components/SpotlightCard";
+import ProgressBar from "@/components/ProgressBar";
 
 interface ProductionProject {
   name: string;
@@ -59,6 +61,8 @@ export default function ProductionProjects() {
             <Rocket className="h-5 w-5" />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            <span className="font-mono text-sm font-normal text-emerald-500 dark:text-emerald-400">// producao</span>
+            <br />
             Projetos em produção
           </h2>
         </div>
@@ -67,9 +71,10 @@ export default function ProductionProjects() {
           {projects.map((project, idx) => {
             const isPlaceholder = !project.url;
             return (
-              <div
+              <SpotlightCard
                 key={idx}
-                className={`group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition dark:border-slate-800 dark:bg-slate-900 ${
+                tilt={!isPlaceholder}
+                className={`flex flex-col justify-between border border-slate-100 bg-white shadow-sm transition dark:border-slate-800 dark:bg-slate-900 ${
                   isPlaceholder ? "opacity-60" : "hover:-translate-y-1 hover:shadow-xl"
                 }`}
               >
@@ -132,10 +137,11 @@ export default function ProductionProjects() {
                     </div>
                   )}
                 </div>
-              </div>
+              </SpotlightCard>
             );
           })}
         </div>
+        <ProgressBar className="mt-8" delay={200} />
       </AnimatedSection>
     </section>
   );

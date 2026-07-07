@@ -28,7 +28,7 @@ const LINKEDIN_URL = "https://www.linkedin.com/in/luiz-amorim-5a0847400/";
 const WEBSITE = "luizamorimdev.vercel.app";
 
 const ABOUT_TEXT =
-  "Desenvolvedor Full Stack com mais de 4 anos de experiência criando soluções web, automações e integrações. Apaixonado por tecnologia, aprendizado contínuo e por transformar ideias em produtos digitais que geram impacto. Atuo com Java, Python, Spring Boot, React, Next.js e bancos de dados relacionais.";
+  "Sou apaixonado por engenharia de software e inteligência artificial. Minha especialidade é desenvolver aplicações Full Stack potencializadas por IA, criar agentes inteligentes, integrar modelos de linguagem e automatizar fluxos complexos. Acredito que o futuro pertence a sistemas capazes de colaborar, aprender e executar tarefas de forma autônoma. Meu objetivo é transformar ideias em produtos digitais robustos, escaláveis e preparados para a próxima geração da computação.";
 
 export default async function Home() {
   const user = await getGitHubUser();

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Folder, Star, GitFork, ExternalLink, Clock, Code2, ArrowUpRight } from "lucide-react";
 import TechIcon from "@/components/TechIcons";
 import AnimatedSection from "@/components/AnimatedSection";
+import SpotlightCard from "@/components/SpotlightCard";
+import ProgressBar from "@/components/ProgressBar";
 import type { GitHubRepo } from "@/lib/github";
 import { getTimeAgo } from "@/lib/github";
 
@@ -33,6 +35,8 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
               <Folder className="h-5 w-5" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+              <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// repositorios_publicos</span>
+              <br />
               Projetos públicos no GitHub
             </h2>
           </div>
@@ -51,9 +55,9 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
           {repos.map((repo) => {
             const gradient = languageGradients[repo.language || "default"] || languageGradients.default;
             return (
-              <div
+              <SpotlightCard
                 key={repo.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+                className="flex flex-col justify-between border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
               >
                 <div className={`relative h-40 bg-gradient-to-br ${gradient} p-6`}>
                   <div className="absolute right-4 top-4 rounded-lg bg-white/20 p-2 backdrop-blur-sm dark:bg-black/20">
@@ -111,7 +115,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
                     Ver repositório
                   </Link>
                 </div>
-              </div>
+              </SpotlightCard>
             );
           })}
         </div>
@@ -127,6 +131,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
             <ExternalLink className="h-4 w-4" />
           </Link>
         </div>
+        <ProgressBar className="mt-8" delay={200} />
       </AnimatedSection>
     </section>
   );

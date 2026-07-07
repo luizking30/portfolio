@@ -1,6 +1,7 @@
 import { Code2 } from "lucide-react";
 import TechIcon from "@/components/TechIcons";
 import AnimatedSection from "@/components/AnimatedSection";
+import ProgressBar from "@/components/ProgressBar";
 
 interface TechnologiesProps {
   languages: string[];
@@ -38,20 +39,30 @@ export default function Technologies({ languages }: TechnologiesProps) {
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
             <Code2 className="h-5 w-5" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Tecnologias</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// stack</span>
+            <br />
+            Tecnologias
+          </h2>
         </div>
 
-        <div className="flex flex-wrap gap-3">
-          {combined.map((tech) => (
-            <span
-              key={tech}
-              className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${techColors[tech] || "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}
-            >
-              <TechIcon name={tech} className="h-5 w-5" />
-              {tech}
-            </span>
-          ))}
+        <div className="relative overflow-hidden">
+          <div className="flex w-max gap-3 animate-marquee">
+            {[...combined, ...combined].map((tech, idx) => (
+              <span
+                key={`${tech}-${idx}`}
+                className={`group/tech relative inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${techColors[tech] || "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}
+              >
+                <TechIcon name={tech} className="h-5 w-5" />
+                {tech}
+                <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] text-green-500 opacity-0 transition-opacity group-hover/tech:opacity-100">
+                  compiling {tech.toLowerCase()}... ✓
+                </span>
+              </span>
+            ))}
+          </div>
         </div>
+        <ProgressBar className="mt-8" delay={200} />
       </AnimatedSection>
     </section>
   );

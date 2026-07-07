@@ -1,5 +1,8 @@
 import { User, MapPin, Calendar, Briefcase, CheckCircle2 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import TypewriterOnView from "@/components/TypewriterOnView";
+import TerminalPrompt from "@/components/TerminalPrompt";
+import ProgressBar from "@/components/ProgressBar";
 
 interface AboutProps {
   text: string;
@@ -34,12 +37,19 @@ export default function About({
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
             <User className="h-5 w-5" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Sobre mim</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// sobre_mim</span>
+            <br />
+            Sobre mim
+          </h2>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900 sm:p-8">
-            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">{text}</p>
+            <TerminalPrompt text="system: describe_yourself()" className="mb-3 text-xs" speed={30} />
+            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
+              <TypewriterOnView text={text} speed={15} />
+            </p>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -59,6 +69,7 @@ export default function About({
             ))}
           </div>
         </div>
+        <ProgressBar className="mt-8" delay={300} />
       </AnimatedSection>
     </section>
   );

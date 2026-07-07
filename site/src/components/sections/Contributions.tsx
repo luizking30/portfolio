@@ -1,5 +1,6 @@
 import { Calendar } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import ProgressBar from "@/components/ProgressBar";
 
 interface Contribution {
   date: string;
@@ -157,6 +158,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
             <span>Mais</span>
           </div>
         </div>
+        <ProgressBar className="mt-8" delay={200} />
       </AnimatedSection>
     </section>
   );

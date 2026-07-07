@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -17,6 +20,14 @@ import {
 } from "lucide-react";
 import { LinkedInIcon, GitHubIcon, InstagramIcon } from "@/components/icons";
 import CountUp from "@/components/CountUp";
+import TypewriterText from "@/components/TypewriterText";
+import MagneticButton from "@/components/MagneticButton";
+import Parallax from "@/components/Parallax";
+import TerminalWindow from "@/components/TerminalWindow";
+import AIBadges from "@/components/AIBadges";
+import BootSequence from "@/components/BootSequence";
+import MatrixRain from "@/components/MatrixRain";
+import CodeRain from "@/components/CodeRain";
 
 interface HeroProps {
   name: string;
@@ -59,6 +70,7 @@ export default function Hero({
   lastCommitRepo,
   lastCommitTime,
 }: HeroProps) {
+  const [booted, setBooted] = useState(false);
   const githubStats = [
     { label: "Repositórios", value: publicRepos, icon: Folder, suffix: "" },
     { label: "Commits", value: totalCommits, icon: GitCommit, suffix: "+" },
@@ -67,10 +79,14 @@ export default function Hero({
   ];
 
   return (
-    <section
-      id="inicio"
-      className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
-    >
+    <>
+      {!booted && <BootSequence onDone={() => setBooted(true)} />}
+      <section
+        id="inicio"
+        className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
+      >
+        <MatrixRain opacity={0.04} />
+        <CodeRain />
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div className="order-2 flex flex-col gap-6 lg:order-1">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-900/20 dark:text-emerald-400">
@@ -81,15 +97,24 @@ export default function Hero({
             DISPONÍVEL PARA CONTRATAÇÃO
           </div>
 
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
-            {name}
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+            <span className="animate-gradient-text bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-cyan-300 dark:to-blue-400">
+              {name}
+            </span>
           </h1>
           <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 sm:text-2xl">
-            {title}
+            <TypewriterText text={title} speed={80} />
           </h2>
-          <p className="max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
-            {description}
-          </p>
+          <TerminalWindow
+            startDelay={1500}
+            lines={[
+              { type: "comment", text: "// Inicializando arquiteto de soluções IA..." },
+              { type: "command", text: "whoami --role" },
+              { type: "output", text: description },
+            ]}
+            className="max-w-xl"
+          />
+          <AIBadges />
 
           <div className="flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400">
             <div className="flex items-center gap-2">
@@ -111,14 +136,14 @@ export default function Hero({
           </div>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            <a
+            <MagneticButton
               href="/curriculo-luiz-amorim.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40"
+              className="items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40"
             >
               <Download className="h-4 w-4" />
               Baixar Currículo
-            </a>
+            </MagneticButton>
             <Link
               href={linkedinUrl}
               target="_blank"
@@ -166,7 +191,7 @@ export default function Hero({
         </div>
 
         <div className="order-1 flex flex-col items-center justify-center gap-6 lg:order-2">
-          <div className="relative">
+          <Parallax speed={0.4} className="relative">
             <div className="absolute inset-0 -z-10 rounded-full bg-blue-200/40 blur-3xl dark:bg-blue-500/20"></div>
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 opacity-50 blur-sm"></div>
             <Image
@@ -177,7 +202,7 @@ export default function Hero({
               priority
               className="relative rounded-full object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80"
             />
-          </div>
+          </Parallax>
 
           <div className="w-full max-w-md rounded-2xl border border-slate-100 bg-white p-5 shadow-lg dark:border-slate-700 dark:bg-slate-800">
             <div className="mb-4 flex items-center justify-between">
@@ -235,5 +260,6 @@ export default function Hero({
         </div>
       </div>
     </section>
+    </>
   );
 }

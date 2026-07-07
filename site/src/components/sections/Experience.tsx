@@ -1,5 +1,7 @@
 import { Briefcase, GraduationCap, Languages } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import TypewriterOnView from "@/components/TypewriterOnView";
+import ProgressBar from "@/components/ProgressBar";
 
 interface ExperienceItem {
   period: string;
@@ -60,6 +62,8 @@ const experiences: ExperienceItem[] = [
   },
 ];
 
+const commitHashes = ["a3f2c1", "b7e8d2", "c1a9f3", "d4e5a6", "e2b3c8", "f8a1d4"];
+
 export default function Experience() {
   return (
     <section
@@ -72,6 +76,8 @@ export default function Experience() {
             <Briefcase className="h-5 w-5" />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// historico</span>
+            <br />
             Experiência
           </h2>
         </div>
@@ -85,9 +91,14 @@ export default function Experience() {
               <div key={idx} className="relative pl-12 sm:pl-14">
                 <div className="absolute left-2 top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-white bg-blue-500 shadow-sm dark:border-slate-900 sm:left-3"></div>
                 <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:shadow-md dark:border-slate-800 dark:bg-slate-950 sm:p-8">
-                  <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400">
-                    <Icon className="h-4 w-4" />
-                    {item.period}
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400">
+                      <Icon className="h-4 w-4" />
+                      {item.period}
+                    </div>
+                    <span className="rounded bg-slate-100 px-2 py-0.5 font-mono text-[10px] text-slate-400 dark:bg-slate-800 dark:text-slate-500">
+                      {commitHashes[idx % commitHashes.length]}
+                    </span>
                   </div>
                   <h3 className="mb-1 text-lg font-bold text-slate-900 dark:text-white">
                     {item.title}
@@ -96,7 +107,7 @@ export default function Experience() {
                     {item.company}
                   </div>
                   <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                    {item.description}
+                    <TypewriterOnView text={item.description} speed={10} />
                   </p>
                 </div>
               </div>
@@ -104,6 +115,7 @@ export default function Experience() {
             })}
           </div>
         </div>
+        <ProgressBar className="mt-8" delay={200} />
       </AnimatedSection>
     </section>
   );

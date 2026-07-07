@@ -63,3 +63,152 @@ body::after {
     opacity: 0.3;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+@keyframes typewriter-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor::after {
+  content: "|";
+  animation: typewriter-blink 1s step-end infinite;
+  margin-left: 2px;
+  font-weight: 100;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+@keyframes scan-line {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.scan-line {
+  animation: scan-line 1.5s ease-in-out infinite;
+}
+
+@keyframes glitch-shift {
+  0%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  20% {
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(90deg) saturate(1.5);
+  }
+  40% {
+    transform: translate(2px, -1px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(-1px, -1px);
+    filter: hue-rotate(270deg) saturate(2);
+  }
+  80% {
+    transform: translate(1px, 1px);
+    filter: hue-rotate(0deg) saturate(1.5);
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitch-shift 0.3s steps(2) infinite;
+}
+
+@keyframes code-rain-fade {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.code-rain-line {
+  animation: code-rain-fade 8s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes git-log-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-git-log {
+  animation: git-log-scroll 20s linear infinite;
+}
+
+@keyframes install-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.install-bar {
+  animation: install-progress 1s ease-out forwards;
+}

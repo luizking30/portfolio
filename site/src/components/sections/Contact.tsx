@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Mail, MapPin, Globe, Phone, CheckCircle2 } from "lucide-react";
 import { LinkedInIcon, GitHubIcon, InstagramIcon } from "@/components/icons";
 import AnimatedSection from "@/components/AnimatedSection";
+import TerminalPrompt from "@/components/TerminalPrompt";
+import ProgressBar from "@/components/ProgressBar";
 
 interface ContactProps {
   email: string;
@@ -26,7 +28,14 @@ export default function Contact({
     <section id="contato" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Vamos conversar?</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// contato</span>
+            <br />
+            Vamos conversar?
+          </h2>
+          <div className="mt-3 mb-2">
+            <TerminalPrompt text="await response() — initializing contact protocols..." className="text-xs" speed={25} />
+          </div>
           <p className="mt-2 text-slate-600 dark:text-slate-300">
             Estou sempre aberto para novas oportunidades e projetos interessantes.
           </p>
@@ -120,6 +129,7 @@ export default function Contact({
             </div>
           </div>
         </div>
+        <ProgressBar className="mt-8" delay={200} />
       </AnimatedSection>
     </section>
   );

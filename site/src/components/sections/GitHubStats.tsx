@@ -2,6 +2,8 @@ import { GitCommit, GitFork, Users, Folder } from "lucide-react";
 import { GitHubIcon } from "@/components/icons";
 import AnimatedSection from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
+import GitLog from "@/components/GitLog";
+import ProgressBar from "@/components/ProgressBar";
 
 interface GitHubStatsProps {
   publicRepos: number;
@@ -31,12 +33,17 @@ export default function GitHubStats({
 
   return (
     <section className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 text-slate-900 dark:bg-blue-900/20 dark:text-white sm:px-6 lg:px-8 xl:px-12">
-      <AnimatedSection className="mx-auto max-w-7xl">
+      <GitLog />
+      <AnimatedSection className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-10 flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-200/50 text-blue-600 dark:bg-white/10 dark:text-white">
             <GitHubIcon className="h-5 w-5" />
           </div>
-          <h2 className="text-2xl font-bold sm:text-3xl">Estatísticas do GitHub</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">
+            <span className="font-mono text-sm font-normal text-blue-400">// git_stats</span>
+            <br />
+            Estatísticas do GitHub
+          </h2>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -80,6 +87,7 @@ export default function GitHubStats({
             Ver perfil no GitHub
           </a>
         </div>
+        <ProgressBar className="mt-8" delay={200} />
       </AnimatedSection>
     </section>
   );
