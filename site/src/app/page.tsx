@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SectionDivider from "@/components/SectionDivider";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Technologies from "@/components/sections/Technologies";
@@ -76,10 +77,15 @@ export default async function Home() {
           focus="Web • APIs • Bots"
           available={true}
         />
+        <SectionDivider />
         <Technologies languages={languages} />
+        <SectionDivider />
         <Projects repos={recentRepos} githubUrl={user.html_url} />
+        <SectionDivider />
         <Experience />
+        <SectionDivider />
         <Contributions contributions={contributions} />
+        <SectionDivider />
         <GitHubStats
           publicRepos={user.public_repos}
           followers={user.followers}

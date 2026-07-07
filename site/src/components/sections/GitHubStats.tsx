@@ -1,6 +1,7 @@
 import { GitCommit, GitFork, Users, Folder } from "lucide-react";
 import { GitHubIcon } from "@/components/icons";
 import AnimatedSection from "@/components/AnimatedSection";
+import CountUp from "@/components/CountUp";
 
 interface GitHubStatsProps {
   publicRepos: number;
@@ -29,7 +30,7 @@ export default function GitHubStats({
   ];
 
   return (
-    <section className="w-full bg-slate-900 px-4 py-20 text-white dark:bg-slate-900 sm:px-6 lg:px-8 xl:px-12">
+    <section className="relative w-full overflow-hidden bg-slate-900 px-4 py-20 text-white dark:bg-slate-900 sm:px-6 lg:px-8 xl:px-12">
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white">
@@ -42,12 +43,18 @@ export default function GitHubStats({
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center dark:border-slate-700 dark:bg-slate-800/50"
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-md transition hover:border-white/20 hover:bg-white/10 dark:border-slate-700 dark:bg-slate-800/50"
             >
               <div className="mb-2 flex justify-center text-blue-400">
                 <stat.icon className="h-6 w-6" />
               </div>
-              <div className="text-3xl font-bold">{stat.value}</div>
+              <div className="text-3xl font-bold">
+                {typeof stat.value === "number" ? (
+                  <CountUp value={stat.value} />
+                ) : (
+                  stat.value
+                )}
+              </div>
               <div className="text-sm text-slate-400">{stat.label}</div>
             </div>
           ))}

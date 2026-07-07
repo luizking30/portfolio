@@ -15,6 +15,7 @@ import {
   Code2,
 } from "lucide-react";
 import { LinkedInIcon, GitHubIcon } from "@/components/icons";
+import CountUp from "@/components/CountUp";
 
 interface HeroProps {
   name: string;
@@ -58,10 +59,10 @@ export default function Hero({
   lastCommitTime,
 }: HeroProps) {
   const githubStats = [
-    { label: "Repositórios", value: publicRepos, icon: Folder },
-    { label: "Commits", value: `${totalCommits}+`, icon: GitCommit },
-    { label: "Seguidores", value: followers, icon: Users },
-    { label: "Linguagens", value: languages.length, icon: Code2 },
+    { label: "Repositórios", value: publicRepos, icon: Folder, suffix: "" },
+    { label: "Commits", value: totalCommits, icon: GitCommit, suffix: "+" },
+    { label: "Seguidores", value: followers, icon: Users, suffix: "" },
+    { label: "Linguagens", value: languages.length, icon: Code2, suffix: "" },
   ];
 
   return (
@@ -69,6 +70,14 @@ export default function Hero({
       id="inicio"
       className="relative w-full overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 py-20 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 sm:px-6 lg:px-8 xl:px-12"
     >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, currentColor 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div className="order-2 flex flex-col gap-6 lg:order-1">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-900/20 dark:text-emerald-400">
@@ -79,7 +88,7 @@ export default function Hero({
             DISPONÍVEL PARA CONTRATAÇÃO
           </div>
 
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+          <h1 className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 sm:text-5xl lg:text-6xl">
             {name}
           </h1>
           <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 sm:text-2xl">
@@ -112,7 +121,7 @@ export default function Hero({
             <a
               href="/curriculo-luiz-amorim.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40"
             >
               <Download className="h-4 w-4" />
               Baixar Currículo
@@ -157,13 +166,14 @@ export default function Hero({
         <div className="order-1 flex flex-col items-center justify-center gap-6 lg:order-2">
           <div className="relative">
             <div className="absolute inset-0 -z-10 rounded-full bg-blue-200/40 blur-3xl dark:bg-blue-500/20"></div>
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-75 blur-sm animate-pulse"></div>
             <Image
               src={avatarUrl}
               alt={name}
               width={420}
               height={420}
               priority
-              className="rounded-2xl object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80"
+              className="relative rounded-2xl object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80"
             />
           </div>
 
@@ -193,7 +203,9 @@ export default function Hero({
                     <stat.icon className="h-4 w-4" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-white">{stat.value}</div>
+                    <div className="text-sm font-bold text-slate-900 dark:text-white">
+                    <CountUp value={stat.value} suffix={stat.suffix} />
+                  </div>
                     <div className="text-xs text-slate-500 dark:text-slate-400">{stat.label}</div>
                   </div>
                 </div>

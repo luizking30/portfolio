@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Folder, Star, GitFork, ExternalLink, Clock, Code2 } from "lucide-react";
+import { Folder, Star, GitFork, ExternalLink, Clock, Code2, ArrowUpRight } from "lucide-react";
 import TechIcon from "@/components/TechIcons";
 import AnimatedSection from "@/components/AnimatedSection";
 import type { GitHubRepo } from "@/lib/github";
@@ -53,7 +53,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
             return (
               <div
                 key={repo.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
               >
                 <div className={`relative h-40 bg-gradient-to-br ${gradient} p-6`}>
                   <div className="absolute right-4 top-4 rounded-lg bg-white/20 p-2 backdrop-blur-sm dark:bg-black/20">
@@ -64,6 +64,12 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
                     )}
                   </div>
                   <h3 className="mt-auto text-xl font-bold text-white drop-shadow-sm">{repo.name}</h3>
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="inline-flex items-center gap-2 rounded-lg bg-white/90 px-4 py-2 text-sm font-semibold text-slate-900">
+                      <ArrowUpRight className="h-4 w-4" />
+                      Ver projeto
+                    </span>
+                  </div>
                 </div>
 
                 <div className="flex flex-1 flex-col justify-between p-5">
