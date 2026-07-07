@@ -33,7 +33,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
               <Folder className="h-5 w-5" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-              Projetos em destaque
+              Projetos públicos no GitHub
             </h2>
           </div>
           <Link

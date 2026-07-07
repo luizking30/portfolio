@@ -5,6 +5,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Technologies from "@/components/sections/Technologies";
 import Projects from "@/components/sections/Projects";
+import ProductionProjects from "@/components/sections/ProductionProjects";
 import Experience from "@/components/sections/Experience";
 import GitHubStats from "@/components/sections/GitHubStats";
 import Contact from "@/components/sections/Contact";
@@ -81,6 +82,8 @@ export default async function Home() {
         <Technologies languages={languages} />
         <SectionDivider />
         <Projects repos={recentRepos} githubUrl={user.html_url} />
+        <SectionDivider />
+        <ProductionProjects />
         <SectionDivider />
         <Experience />
         <SectionDivider />
