@@ -45,6 +45,12 @@ body::after {
   animation: grid-pulse 3s ease-in-out infinite;
 }
 
+@media (max-width: 767px) {
+  body::after {
+    animation: none;
+  }
+}
+
 .dark body::after {
   background-image:
     radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.03) 2px, transparent 2px),

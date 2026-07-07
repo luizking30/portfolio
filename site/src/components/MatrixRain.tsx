@@ -12,6 +12,12 @@ export default function MatrixRain({ className = "", opacity = 0.06 }: { classNa
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (isMobile) return;
+
     let animationId: number;
     let columns: number;
     let drops: number[];

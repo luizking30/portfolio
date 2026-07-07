@@ -103,7 +103,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
 
         <div className="overflow-x-auto rounded-2xl border border-slate-100 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
           {weeks.length > 0 ? (
-            <div className="relative inline-block">
+            <div className="relative inline-block min-w-full">
               <div className="flex">
                 <div className="w-7 shrink-0" />
                 <div className="relative h-4">
@@ -143,6 +143,9 @@ export default function Contributions({ contributions }: ContributionsProps) {
                     </div>
                   ))}
                 </div>
+              </div>
+              <div className="mt-2 text-[10px] text-slate-400 dark:text-slate-500 sm:hidden">
+                ← Arraste para ver mais →
               </div>
             </div>
           ) : (

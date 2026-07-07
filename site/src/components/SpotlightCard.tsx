@@ -10,6 +10,7 @@ interface SpotlightCardProps {
 
 export default function SpotlightCard({ children, className = "", tilt = true }: SpotlightCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isTouchDevice = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -20,7 +21,7 @@ export default function SpotlightCard({ children, className = "", tilt = true }:
     el.style.setProperty("--mouse-x", `${x}px`);
     el.style.setProperty("--mouse-y", `${y}px`);
 
-    if (tilt) {
+    if (tilt && !isTouchDevice) {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       const rotateX = ((y - centerY) / centerY) * -6;
@@ -42,10 +43,10 @@ export default function SpotlightCard({ children, className = "", tilt = true }:
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative overflow-hidden rounded-2xl transition-transform duration-200 ease-out glitch-hover ${tilt ? "perspective-1000" : ""} ${className}`}
+      className={`group relative overflow-hidden rounded-2xl transition-transform duration-200 ease-out glitch-hover ${tilt && !isTouchDevice ? "perspective-1000" : ""} ${className}`}
       style={{
-        transform: tilt ? "rotateX(var(--rotate-x, 0)) rotateY(var(--rotate-y, 0))" : undefined,
-        transformStyle: tilt ? "preserve-3d" : undefined,
+        transform: tilt && !isTouchDevice ? "rotateX(var(--rotate-x, 0)) rotateY(var(--rotate-y, 0))" : undefined,
+        transformStyle: tilt && !isTouchDevice ? "preserve-3d" : undefined,
       }}
     >
       <div

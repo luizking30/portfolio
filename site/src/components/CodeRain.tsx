@@ -40,7 +40,7 @@ export default function CodeRain({ className = "" }: { className?: string }) {
   }, []);
 
   return (
-    <div ref={containerRef} className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
+    <div ref={containerRef} className={`pointer-events-none absolute inset-0 hidden overflow-hidden sm:block ${className}`}>
       {visible && lines.map((line, idx) => (
         <pre
           key={idx}

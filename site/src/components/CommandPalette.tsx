@@ -67,11 +67,11 @@ export default function CommandPalette() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-[55] hidden items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-500 shadow-lg transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:text-blue-400 md:flex"
+        className="fixed bottom-6 right-6 z-[55] flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-500 shadow-lg transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:text-blue-400 md:px-3"
         aria-label="Abrir paleta de comandos"
       >
         <Search className="h-3.5 w-3.5" />
-        <span>Cmd+K</span>
+        <span className="hidden md:inline">Cmd+K</span>
       </button>
     );
   }

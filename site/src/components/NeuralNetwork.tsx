@@ -37,6 +37,9 @@ export default function NeuralNetwork({
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
 
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (isMobile) return;
+
     function resize() {
       if (!canvas || !ctx) return;
       const parent = canvas.parentElement;

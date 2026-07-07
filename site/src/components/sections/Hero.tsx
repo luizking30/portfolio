@@ -202,7 +202,7 @@ export default function Hero({
               width={360}
               height={360}
               priority
-              className="relative rounded-full object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80"
+              className="relative h-auto w-full max-w-[280px] rounded-full object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80 sm:max-w-[360px]"
             />
           </Parallax>
 
@@ -250,7 +250,7 @@ export default function Hero({
               </div>
             )}
 
-            <div className="mt-3 flex items-center gap-2 rounded-lg bg-slate-50 p-3 text-xs dark:bg-slate-700/50">
+            <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg bg-slate-50 p-3 text-xs dark:bg-slate-700/50">
               <Lock className="h-3.5 w-3.5 shrink-0 text-slate-400" />
               <span className="text-slate-500 dark:text-slate-400">Repositórios privados:</span>
               <span className="font-bold text-slate-900 dark:text-white">16+</span>

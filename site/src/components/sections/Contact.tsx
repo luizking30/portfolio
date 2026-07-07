@@ -97,7 +97,7 @@ export default function Contact({
               </div>
               <div>
                 <div className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Email</div>
-                <div className="text-xs font-semibold text-slate-900 dark:text-white">{email}</div>
+                <div className="text-xs font-semibold break-all text-slate-900 dark:text-white">{email}</div>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-900">

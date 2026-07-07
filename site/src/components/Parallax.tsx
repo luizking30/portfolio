@@ -12,6 +12,12 @@ export default function Parallax({ children, className = "", speed = 0.3 }: Para
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouch) return;
+
     const handleScroll = () => {
       const el = ref.current;
       if (!el) return;
