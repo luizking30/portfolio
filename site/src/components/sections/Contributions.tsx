@@ -99,41 +99,38 @@ export default function Contributions({ contributions }: ContributionsProps) {
           </div>
         </div>
 
-        <div className="overflow-x-auto rounded-2xl border border-slate-100 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+        <div className="overflow-x-auto rounded-2xl border border-slate-100 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
           {weeks.length > 0 ? (
-            <div className="inline-block">
+            <div className="relative inline-block">
               <div className="flex">
-                <div className="w-8 shrink-0" />
-                <div className="flex gap-1">
+                <div className="w-7 shrink-0" />
+                <div className="relative h-4">
                   {monthLabels.map((m, i) => (
-                    <div
+                    <span
                       key={i}
-                      className="text-[10px] text-slate-500 dark:text-slate-400"
-                      style={{
-                        position: "absolute",
-                        left: `calc(2rem + ${m.col * 16}px)`,
-                      }}
+                      className="absolute text-[10px] text-slate-500 dark:text-slate-400"
+                      style={{ left: `${m.col * 13}px` }}
                     >
                       {m.label}
-                    </div>
+                    </span>
                   ))}
                 </div>
               </div>
-              <div className="mt-4 flex gap-1">
-                <div className="flex w-8 shrink-0 flex-col gap-1">
+              <div className="mt-1 flex gap-[3px]">
+                <div className="flex w-7 shrink-0 flex-col gap-[3px]">
                   {dayLabels.map((label, i) => (
-                    <div key={i} className="h-3 text-[9px] leading-3 text-slate-400 dark:text-slate-500">
+                    <div key={i} className="h-[10px] text-[9px] leading-[10px] text-slate-400 dark:text-slate-500">
                       {label}
                     </div>
                   ))}
                 </div>
-                <div className="flex gap-1">
+                <div className="flex gap-[3px]">
                   {weeks.map((week, weekIndex) => (
-                    <div key={weekIndex} className="flex flex-col gap-1">
+                    <div key={weekIndex} className="flex flex-col gap-[3px]">
                       {week.map((cell, dayIndex) => (
                         <div
                           key={dayIndex}
-                          className={`h-3 w-3 rounded-sm ${levelClasses[cell.level] ?? levelClasses[0]}`}
+                          className={`h-[10px] w-[10px] rounded-sm ${levelClasses[cell.level] ?? levelClasses[0]}`}
                           title={
                             cell.date
                               ? `${cell.date}: ${cell.count} contribuição${cell.count !== 1 ? "ões" : ""}`
@@ -152,10 +149,10 @@ export default function Contributions({ contributions }: ContributionsProps) {
             </div>
           )}
 
-          <div className="mt-4 flex items-center justify-end gap-2 text-xs text-slate-500 dark:text-slate-400">
+          <div className="mt-3 flex items-center justify-end gap-1.5 text-xs text-slate-500 dark:text-slate-400">
             <span>Menos</span>
             {levelClasses.map((cls, index) => (
-              <div key={index} className={`h-3 w-3 rounded-sm ${cls}`} />
+              <div key={index} className={`h-[10px] w-[10px] rounded-sm ${cls}`} />
             ))}
             <span>Mais</span>
           </div>
