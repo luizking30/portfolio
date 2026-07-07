@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Rocket, Lock, ArrowUpRight, ExternalLink, Bot, MessageSquare, Link2, Brain } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -7,6 +8,7 @@ interface ProductionProject {
   url: string;
   description: string;
   gradient: string;
+  image?: string;
   techs: string[];
   features: { icon: typeof Bot; label: string }[];
 }
@@ -18,6 +20,7 @@ const projects: ProductionProject[] = [
     description:
       "Sistema para afiliados que escuta mensagens de ofertas recebidas via WhatsApp e Telegram dos grupos do usuário, troca o link de afiliado (Mercado Livre, Shopee, Amazon e outros) pelo link cadastrado no sistema e responde nos grupos selecionados.",
     gradient: "from-blue-500 via-cyan-500 to-teal-500",
+    image: "/logopromobot.webp",
     techs: ["WhatsApp API", "Telegram API", "Evolution API", "IA"],
     features: [
       { icon: MessageSquare, label: "Escuta ofertas via WhatsApp e Telegram" },
@@ -80,7 +83,15 @@ export default function ProductionProjects() {
                 }`}
               >
                 <div className={`relative h-40 bg-gradient-to-br ${project.gradient} p-6`}>
-                  <div className="absolute right-4 top-4 flex gap-2">
+                  {project.image && (
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
+                  <div className="absolute right-4 top-4 z-10 flex gap-2">
                     {!isPlaceholder && (
                       <>
                         <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2.5 py-1 text-[10px] font-bold text-white backdrop-blur-sm">
@@ -94,7 +105,7 @@ export default function ProductionProjects() {
                       </>
                     )}
                   </div>
-                  <h3 className="mt-auto text-xl font-bold text-white drop-shadow-sm">
+                  <h3 className="relative z-10 mt-auto text-xl font-bold text-white drop-shadow-sm">
                     {project.name}
                   </h3>
                   {!isPlaceholder && (
