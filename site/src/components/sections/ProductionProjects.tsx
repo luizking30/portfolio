@@ -20,7 +20,7 @@ const projects: ProductionProject[] = [
       "Automação para afiliados: troca links de ofertas via WhatsApp e Telegram, com link-in-bio e IA integrada.",
     gradient: "from-blue-500 via-cyan-500 to-teal-500",
     image: "/logopromobot.webp",
-    techs: ["WhatsApp API", "Telegram API", "Evolution API", "IA"],
+    techs: ["SaaS", "Multi-tenant", "WhatsApp API", "IA"],
   },
   {
     name: "SharkGestão ERP",
@@ -28,14 +28,15 @@ const projects: ProductionProject[] = [
     description:
       "ERP SaaS para assistência técnica e lojas de informática: estoque, PDV, OS, clientes, relatórios e etiquetas.",
     gradient: "from-indigo-500 via-blue-500 to-cyan-500",
-    techs: ["ERP", "PDV", "Evolution API", "SaaS"],
+    techs: ["SaaS", "Multi-tenant", "ERP", "PDV"],
   },
   {
-    name: "Em breve",
-    url: "",
-    description: "Novo projeto em produção em breve.",
-    gradient: "from-slate-400 to-slate-600",
-    techs: [],
+    name: "Shark Fitness",
+    url: "https://www.sharkgestao.com/",
+    description:
+      "SaaS para personais: cadastro de alunos, medidas, % de gordura, agendamento de aulas e acompanhamento com fotos.",
+    gradient: "from-orange-500 via-red-500 to-pink-500",
+    techs: ["SaaS", "Multi-tenant", "Agendamento", "IA"],
   },
   {
     name: "Em breve",
