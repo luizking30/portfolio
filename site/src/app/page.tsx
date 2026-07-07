@@ -25,7 +25,7 @@ const WHATSAPP_NUMBER = "5561981048509";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 const EMAIL = "luiz.eduardo.amorim@hotmail.com";
 const LINKEDIN_URL = "https://www.linkedin.com/in/luiz-amorim-5a0847400/";
-const WEBSITE = "luizamorim.dev";
+const WEBSITE = "luizamorimdev.vercel.app";
 
 const ABOUT_TEXT =
   "Desenvolvedor Full Stack com mais de 4 anos de experiência criando soluções web, automações e integrações. Apaixonado por tecnologia, aprendizado contínuo e por transformar ideias em produtos digitais que geram impacto. Atuo com Java, Python, Spring Boot, React, Next.js e bancos de dados relacionais.";

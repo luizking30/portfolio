@@ -50,7 +50,7 @@ export default function Footer() {
             <Mail className="h-4 w-4" />
           </Link>
           <Link
-            href="https://luizamorim.dev"
+            href="https://luizamorimdev.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Website"
