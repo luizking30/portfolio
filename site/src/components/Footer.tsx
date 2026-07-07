@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Heart, Mail, Globe } from "lucide-react";
-import { GitHubIcon, LinkedInIcon } from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/icons";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -32,6 +32,15 @@ export default function Footer() {
             className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:text-blue-400"
           >
             <LinkedInIcon className="h-4 w-4" />
+          </Link>
+          <Link
+            href="https://instagram.com/luizamorim1"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:border-pink-300 hover:text-pink-600 dark:border-slate-700 dark:text-slate-400 dark:hover:border-pink-500 dark:hover:text-pink-400"
+          >
+            <InstagramIcon className="h-4 w-4" />
           </Link>
           <Link
             href="mailto:luiz.eduardo.amorim@hotmail.com"

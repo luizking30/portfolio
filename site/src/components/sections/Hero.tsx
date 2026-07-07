@@ -13,6 +13,7 @@ import {
   Users,
   Folder,
   Code2,
+  Lock,
 } from "lucide-react";
 import { LinkedInIcon, GitHubIcon } from "@/components/icons";
 import CountUp from "@/components/CountUp";
@@ -88,7 +89,7 @@ export default function Hero({
             DISPONÍVEL PARA CONTRATAÇÃO
           </div>
 
-          <h1 className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
             {name}
           </h1>
           <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 sm:text-2xl">
@@ -166,12 +167,12 @@ export default function Hero({
         <div className="order-1 flex flex-col items-center justify-center gap-6 lg:order-2">
           <div className="relative">
             <div className="absolute inset-0 -z-10 rounded-full bg-blue-200/40 blur-3xl dark:bg-blue-500/20"></div>
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-75 blur-sm animate-pulse"></div>
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 opacity-50 blur-sm"></div>
             <Image
               src={avatarUrl}
               alt={name}
-              width={420}
-              height={420}
+              width={360}
+              height={360}
               priority
               className="relative rounded-2xl object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80"
             />
@@ -220,6 +221,15 @@ export default function Hero({
                 <span className="font-medium text-blue-600 dark:text-blue-400">{lastCommitRepo}</span>
               </div>
             )}
+
+            <div className="mt-3 flex items-center gap-2 rounded-lg bg-slate-50 p-3 text-xs dark:bg-slate-700/50">
+              <Lock className="h-3.5 w-3.5 shrink-0 text-slate-400" />
+              <span className="text-slate-500 dark:text-slate-400">Repositórios privados:</span>
+              <span className="font-bold text-slate-900 dark:text-white">16+</span>
+              <span className="text-slate-300 dark:text-slate-600">•</span>
+              <span className="text-slate-500 dark:text-slate-400">Commits privados:</span>
+              <span className="font-bold text-slate-900 dark:text-white">528+</span>
+            </div>
           </div>
         </div>
       </div>
