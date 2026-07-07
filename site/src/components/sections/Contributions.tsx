@@ -19,8 +19,66 @@ const levelClasses = [
   "bg-emerald-500 dark:bg-emerald-500",
 ];
 
+const monthNames = [
+  "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+  "Jul", "Ago", "Set", "Out", "Nov", "Dez",
+];
+
+const dayLabels = ["", "Seg", "", "Qua", "", "Sex", ""];
+
+interface Cell {
+  date: string | null;
+  count: number;
+  level: number;
+}
+
+function buildGrid(contributions: Contribution[]): Cell[][] {
+  if (contributions.length === 0) return [];
+
+  const firstDate = new Date(contributions[0].date + "T00:00:00");
+  const firstDayOfWeek = firstDate.getDay();
+
+  const padded: Cell[] = [];
+  for (let i = 0; i < firstDayOfWeek; i++) {
+    padded.push({ date: null, count: 0, level: 0 });
+  }
+  for (const c of contributions) {
+    padded.push({ date: c.date, count: c.count, level: c.level });
+  }
+  while (padded.length % 7 !== 0) {
+    padded.push({ date: null, count: 0, level: 0 });
+  }
+
+  const weeks: Cell[][] = [];
+  for (let i = 0; i < padded.length; i += 7) {
+    weeks.push(padded.slice(i, i + 7));
+  }
+  return weeks;
+}
+
+function getMonthLabels(weeks: Cell[][]): { label: string; col: number }[] {
+  const labels: { label: string; col: number }[] = [];
+  let lastMonth = -1;
+
+  weeks.forEach((week, col) => {
+    for (const cell of week) {
+      if (!cell.date) continue;
+      const d = new Date(cell.date + "T00:00:00");
+      const m = d.getMonth();
+      if (m !== lastMonth) {
+        labels.push({ label: monthNames[m], col });
+        lastMonth = m;
+      }
+    }
+  });
+
+  return labels;
+}
+
 export default function Contributions({ contributions }: ContributionsProps) {
   const total = contributions.reduce((sum, day) => sum + day.count, 0);
+  const weeks = buildGrid(contributions);
+  const monthLabels = getMonthLabels(weeks);
 
   return (
     <section className="w-full bg-white px-4 py-20 dark:bg-slate-950 sm:px-6 lg:px-8 xl:px-12">
@@ -35,35 +93,64 @@ export default function Contributions({ contributions }: ContributionsProps) {
                 Contribuições
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400">
-                {total} contribuições nos últimos 12 meses
+                {total} contribuições no último ano
               </p>
             </div>
           </div>
         </div>
 
         <div className="overflow-x-auto rounded-2xl border border-slate-100 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
-          <div className="flex gap-1">
-            {Array.from({ length: 52 }).map((_, weekIndex) => (
-              <div key={weekIndex} className="flex flex-col gap-1">
-                {Array.from({ length: 7 }).map((_, dayIndex) => {
-                  const contributionIndex = weekIndex * 7 + dayIndex;
-                  const contribution = contributions[contributionIndex];
-                  const level = contribution?.level ?? 0;
-                  return (
+          {weeks.length > 0 ? (
+            <div className="inline-block">
+              <div className="flex">
+                <div className="w-8 shrink-0" />
+                <div className="flex gap-1">
+                  {monthLabels.map((m, i) => (
                     <div
-                      key={dayIndex}
-                      className={`h-3 w-3 rounded-sm ${levelClasses[level] ?? levelClasses[0]}`}
-                      title={
-                        contribution
-                          ? `${contribution.date}: ${contribution.count} contribuições`
-                          : undefined
-                      }
-                    />
-                  );
-                })}
+                      key={i}
+                      className="text-[10px] text-slate-500 dark:text-slate-400"
+                      style={{
+                        position: "absolute",
+                        left: `calc(2rem + ${m.col * 16}px)`,
+                      }}
+                    >
+                      {m.label}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+              <div className="mt-4 flex gap-1">
+                <div className="flex w-8 shrink-0 flex-col gap-1">
+                  {dayLabels.map((label, i) => (
+                    <div key={i} className="h-3 text-[9px] leading-3 text-slate-400 dark:text-slate-500">
+                      {label}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-1">
+                  {weeks.map((week, weekIndex) => (
+                    <div key={weekIndex} className="flex flex-col gap-1">
+                      {week.map((cell, dayIndex) => (
+                        <div
+                          key={dayIndex}
+                          className={`h-3 w-3 rounded-sm ${levelClasses[cell.level] ?? levelClasses[0]}`}
+                          title={
+                            cell.date
+                              ? `${cell.date}: ${cell.count} contribuição${cell.count !== 1 ? "ões" : ""}`
+                              : undefined
+                          }
+                        />
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="py-8 text-center text-sm text-slate-500 dark:text-slate-400">
+              Não foi possível carregar as contribuições.
+            </div>
+          )}
 
           <div className="mt-4 flex items-center justify-end gap-2 text-xs text-slate-500 dark:text-slate-400">
             <span>Menos</span>
