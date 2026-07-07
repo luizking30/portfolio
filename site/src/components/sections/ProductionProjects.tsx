@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Rocket, Lock, ArrowUpRight, ExternalLink, Bot, MessageSquare, Link2, Brain } from "lucide-react";
+import { Rocket, Lock, ExternalLink, Bot, MessageSquare, Link2, Brain } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
 interface ProductionProject {
@@ -105,17 +105,6 @@ export default function ProductionProjects() {
                       </>
                     )}
                   </div>
-                  <h3 className="relative z-10 mt-auto text-xl font-bold text-white drop-shadow-sm">
-                    {project.name}
-                  </h3>
-                  {!isPlaceholder && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                      <span className="inline-flex items-center gap-2 rounded-lg bg-white/90 px-4 py-2 text-sm font-semibold text-slate-900">
-                        <ArrowUpRight className="h-4 w-4" />
-                        Ver projeto
-                      </span>
-                    </div>
-                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col justify-between p-5">
