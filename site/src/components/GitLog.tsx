@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 const commits = [
   "a3f2c1 feat: add autonomous agent pipeline",
   "b7e8d2 fix: optimize neural inference layer",
@@ -20,9 +22,25 @@ const commits = [
 ];
 
 export default function GitLog({ className = "" }: { className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisible(entries[0].isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
-      <div className="animate-git-log">
+    <div ref={ref} className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
+      <div className={visible ? "animate-git-log" : ""} style={visible ? undefined : { animationPlayState: "paused" }}>
         {[...commits, ...commits].map((commit, idx) => (
           <div key={idx} className="whitespace-nowrap py-0.5 font-mono text-[10px] text-blue-500/8 dark:text-blue-400/8">
             <span className="text-green-400/8">commit </span>

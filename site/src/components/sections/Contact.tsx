@@ -4,6 +4,8 @@ import { LinkedInIcon, GitHubIcon, InstagramIcon } from "@/components/icons";
 import AnimatedSection from "@/components/AnimatedSection";
 import TerminalPrompt from "@/components/TerminalPrompt";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
+import BinaryDecodeText from "@/components/BinaryDecodeText";
 
 interface ContactProps {
   email: string;
@@ -31,7 +33,7 @@ export default function Contact({
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
             <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// contato</span>
             <br />
-            Vamos conversar?
+            <ScrambleText text="Vamos" /> <BinaryDecodeText text="conversar?" speed={200} stagger={50} />
           </h2>
           <div className="mt-3 mb-2">
             <TerminalPrompt text="await response() — initializing contact protocols..." className="text-xs" speed={25} />

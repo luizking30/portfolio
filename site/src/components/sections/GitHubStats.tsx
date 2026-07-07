@@ -4,6 +4,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
 import GitLog from "@/components/GitLog";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
 
 interface GitHubStatsProps {
   publicRepos: number;
@@ -32,7 +33,7 @@ export default function GitHubStats({
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 text-slate-900 dark:bg-blue-900/20 dark:text-white sm:px-6 lg:px-8 xl:px-12">
+    <section id="github-stats" className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 text-slate-900 dark:bg-blue-900/20 dark:text-white sm:px-6 lg:px-8 xl:px-12">
       <GitLog />
       <AnimatedSection className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-10 flex items-center gap-3">
@@ -42,7 +43,7 @@ export default function GitHubStats({
           <h2 className="text-2xl font-bold sm:text-3xl">
             <span className="font-mono text-sm font-normal text-blue-400">// git_stats</span>
             <br />
-            Estatísticas do GitHub
+            <ScrambleText text="Estatísticas do GitHub" />
           </h2>
         </div>
 

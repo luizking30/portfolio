@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 export default function MatrixRain({ className = "", opacity = 0.06 }: { className?: string; opacity?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const visibleRef = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -23,28 +24,41 @@ export default function MatrixRain({ className = "", opacity = 0.06 }: { classNa
       drops = Array(columns).fill(0).map(() => Math.random() * canvas.height);
     };
     resize();
-    window.addEventListener("resize", resize);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        visibleRef.current = entries[0].isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
 
     const draw = () => {
-      ctx.fillStyle = "rgba(10, 20, 36, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#3b82f6";
-      ctx.font = "12px monospace";
-      for (let i = 0; i < drops.length; i++) {
-        const char = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(char, i * 14, drops[i]);
-        drops[i] += 14;
-        if (drops[i] > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
+      if (visibleRef.current) {
+        ctx.fillStyle = "rgba(10, 20, 36, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#3b82f6";
+        ctx.font = "12px monospace";
+        for (let i = 0; i < drops.length; i++) {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(char, i * 14, drops[i]);
+          drops[i] += 14;
+          if (drops[i] > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
         }
       }
       animationId = requestAnimationFrame(draw);
     };
     draw();
 
+    const onResize = () => resize();
+    window.addEventListener("resize", onResize);
+
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", onResize);
+      observer.disconnect();
     };
   }, []);
 

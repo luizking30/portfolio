@@ -3,6 +3,9 @@ import AnimatedSection from "@/components/AnimatedSection";
 import TypewriterOnView from "@/components/TypewriterOnView";
 import TerminalPrompt from "@/components/TerminalPrompt";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
+import BinaryDecodeText from "@/components/BinaryDecodeText";
+import CodeTyping from "@/components/CodeTyping";
 
 interface AboutProps {
   text: string;
@@ -40,7 +43,7 @@ export default function About({
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
             <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// sobre_mim</span>
             <br />
-            Sobre mim
+            <ScrambleText text="Sobre" /> <BinaryDecodeText text="mim" speed={200} stagger={50} />
           </h2>
         </div>
 
@@ -50,6 +53,18 @@ export default function About({
             <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               <TypewriterOnView text={text} speed={15} />
             </p>
+            <CodeTyping
+              language="python"
+              speed={20}
+              className="mt-6"
+              code={`def build_ai_agent(task: str) -> Agent:
+    agent = Agent(
+        model="gpt-4",
+        tools=[search, code_exec],
+        memory=LongTermMemory()
+    )
+    return agent.run(task)`}
+            />
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

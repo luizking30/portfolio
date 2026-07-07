@@ -1,6 +1,7 @@
 import { Calendar } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
 
 interface Contribution {
   date: string;
@@ -82,7 +83,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
   const monthLabels = getMonthLabels(weeks);
 
   return (
-    <section className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
+    <section id="contribuicoes" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -91,7 +92,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-                Contribuições
+                <ScrambleText text="Contribuições" />
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400">
                 {total} contribuições no último ano

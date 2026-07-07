@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
+import CircuitDivider from "@/components/CircuitDivider";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Technologies from "@/components/sections/Technologies";
@@ -9,6 +10,9 @@ import ProductionProjects from "@/components/sections/ProductionProjects";
 import Experience from "@/components/sections/Experience";
 import GitHubStats from "@/components/sections/GitHubStats";
 import Contact from "@/components/sections/Contact";
+import ScrollProgress from "@/components/ScrollProgress";
+import CommandPalette from "@/components/CommandPalette";
+import SystemStatus from "@/components/SystemStatus";
 import {
   getGitHubUser,
   getGitHubRepos,
@@ -49,6 +53,9 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <ScrollProgress />
+      <CommandPalette />
+      <SystemStatus />
       <Header />
       <main className="flex-1">
         <Hero
@@ -78,15 +85,15 @@ export default async function Home() {
           focus="Web • APIs • Bots"
           available={true}
         />
-        <SectionDivider />
+        <CircuitDivider />
         <Technologies languages={languages} />
         <SectionDivider />
         <Projects repos={recentRepos} githubUrl={user.html_url} />
-        <SectionDivider />
+        <CircuitDivider />
         <ProductionProjects />
         <SectionDivider />
         <Experience />
-        <SectionDivider />
+        <CircuitDivider />
         <Contributions contributions={contributions} />
         <SectionDivider />
         <GitHubStats

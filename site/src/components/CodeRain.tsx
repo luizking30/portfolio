@@ -12,6 +12,7 @@ const snippets = [
 
 export default function CodeRain({ className = "" }: { className?: string }) {
   const [lines, setLines] = useState<{ text: string; top: number; left: number; delay: number }[]>([]);
+  const [visible, setVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,11 +23,25 @@ export default function CodeRain({ className = "" }: { className?: string }) {
       delay: idx * 800,
     }));
     setLines(generated);
+
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div ref={containerRef} className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
-      {lines.map((line, idx) => (
+      {visible && lines.map((line, idx) => (
         <pre
           key={idx}
           className="absolute font-mono text-[10px] leading-relaxed text-blue-500/10 dark:text-blue-400/10 whitespace-pre"

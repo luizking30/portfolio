@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TerminalPromptProps {
   text: string;
@@ -19,8 +19,27 @@ export default function TerminalPrompt({
 }: TerminalPromptProps) {
   const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
     let i = 0;
     const interval = setInterval(() => {
       if (i < text.length) {
@@ -32,10 +51,10 @@ export default function TerminalPrompt({
       }
     }, speed);
     return () => clearInterval(interval);
-  }, [text, speed]);
+  }, [started, text, speed]);
 
   return (
-    <div className={`font-mono text-sm ${className}`}>
+    <div ref={ref} className={`font-mono text-sm ${className}`}>
       <span className="text-green-400">{prefix} </span>
       <span className="text-slate-600 dark:text-slate-300">
         {displayed}

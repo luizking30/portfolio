@@ -212,3 +212,49 @@ body::after {
 .install-bar {
   animation: install-progress 1s ease-out forwards;
 }
+
+@keyframes circuit-draw {
+  0% {
+    stroke-dashoffset: var(--circuit-length, 1000);
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes border-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-border-gradient {
+  position: relative;
+  background-clip: padding-box;
+}
+
+.animate-border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.5),
+    rgba(6, 182, 212, 0.5),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: border-flow 3s ease-in-out infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

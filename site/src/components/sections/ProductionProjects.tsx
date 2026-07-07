@@ -4,6 +4,7 @@ import { Rocket, Lock, ExternalLink } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import SpotlightCard from "@/components/SpotlightCard";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
 
 interface ProductionProject {
   name: string;
@@ -63,7 +64,7 @@ export default function ProductionProjects() {
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
             <span className="font-mono text-sm font-normal text-emerald-500 dark:text-emerald-400">// producao</span>
             <br />
-            Projetos em produção
+            <ScrambleText text="Projetos em produção" />
           </h2>
         </div>
 
@@ -74,7 +75,7 @@ export default function ProductionProjects() {
               <SpotlightCard
                 key={idx}
                 tilt={!isPlaceholder}
-                className={`flex flex-col justify-between border border-slate-100 bg-white shadow-sm transition dark:border-slate-800 dark:bg-slate-900 ${
+                className={`flex flex-col justify-between border border-slate-100 bg-white shadow-sm transition dark:border-slate-800 dark:bg-slate-900 animate-border-gradient ${
                   isPlaceholder ? "opacity-60" : "hover:-translate-y-1 hover:shadow-xl"
                 }`}
               >

@@ -2,6 +2,7 @@ import { Code2 } from "lucide-react";
 import TechIcon from "@/components/TechIcons";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
 
 interface TechnologiesProps {
   languages: string[];
@@ -42,7 +43,7 @@ export default function Technologies({ languages }: TechnologiesProps) {
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
             <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// stack</span>
             <br />
-            Tecnologias
+            <ScrambleText text="Tecnologias" />
           </h2>
         </div>
 

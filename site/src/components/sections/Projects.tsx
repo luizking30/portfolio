@@ -4,6 +4,8 @@ import TechIcon from "@/components/TechIcons";
 import AnimatedSection from "@/components/AnimatedSection";
 import SpotlightCard from "@/components/SpotlightCard";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
+import BinaryDecodeText from "@/components/BinaryDecodeText";
 import type { GitHubRepo } from "@/lib/github";
 import { getTimeAgo } from "@/lib/github";
 
@@ -37,7 +39,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
               <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// repositorios_publicos</span>
               <br />
-              Projetos públicos no GitHub
+              <ScrambleText text="Projetos" /> <BinaryDecodeText text="públicos" speed={200} stagger={50} />
             </h2>
           </div>
           <Link
@@ -57,7 +59,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
             return (
               <SpotlightCard
                 key={repo.id}
-                className="flex flex-col justify-between border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+                className="flex flex-col justify-between border border-slate-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 animate-border-gradient"
               >
                 <div className={`relative h-40 bg-gradient-to-br ${gradient} p-6`}>
                   <div className="absolute right-4 top-4 rounded-lg bg-white/20 p-2 backdrop-blur-sm dark:bg-black/20">

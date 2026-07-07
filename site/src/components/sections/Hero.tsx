@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import { LinkedInIcon, GitHubIcon, InstagramIcon } from "@/components/icons";
 import CountUp from "@/components/CountUp";
-import TypewriterText from "@/components/TypewriterText";
 import MagneticButton from "@/components/MagneticButton";
 import Parallax from "@/components/Parallax";
 import TerminalWindow from "@/components/TerminalWindow";
@@ -28,6 +27,8 @@ import AIBadges from "@/components/AIBadges";
 import BootSequence from "@/components/BootSequence";
 import MatrixRain from "@/components/MatrixRain";
 import CodeRain from "@/components/CodeRain";
+import NeuralNetwork from "@/components/NeuralNetwork";
+import BinaryDecodeText from "@/components/BinaryDecodeText";
 
 interface HeroProps {
   name: string;
@@ -85,6 +86,7 @@ export default function Hero({
         id="inicio"
         className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
       >
+        <NeuralNetwork opacity={0.3} nodeCount={40} maxDistance={120} />
         <MatrixRain opacity={0.04} />
         <CodeRain />
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
@@ -99,11 +101,11 @@ export default function Hero({
 
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             <span className="animate-gradient-text bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-cyan-300 dark:to-blue-400">
-              {name}
+              <BinaryDecodeText text={name} speed={250} stagger={80} startDelay={1200} />
             </span>
           </h1>
           <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 sm:text-2xl">
-            <TypewriterText text={title} speed={80} />
+            <BinaryDecodeText text={title} speed={200} stagger={60} startDelay={2000} />
           </h2>
           <TerminalWindow
             startDelay={1500}

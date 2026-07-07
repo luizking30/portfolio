@@ -2,6 +2,7 @@ import { Briefcase, GraduationCap, Languages } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import TypewriterOnView from "@/components/TypewriterOnView";
 import ProgressBar from "@/components/ProgressBar";
+import ScrambleText from "@/components/ScrambleText";
 
 interface ExperienceItem {
   period: string;
@@ -78,7 +79,7 @@ export default function Experience() {
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
             <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// historico</span>
             <br />
-            Experiência
+            <ScrambleText text="Experiência" />
           </h2>
         </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TerminalWindowProps {
   lines: { type: "command" | "output" | "comment"; text: string }[];
@@ -14,8 +14,27 @@ export default function TerminalWindow({ lines, speed = 25, startDelay = 1500, c
   const [currentText, setCurrentText] = useState("");
   const [done, setDone] = useState(false);
   const [currentLineIdx, setCurrentLineIdx] = useState(0);
+  const [started, setStarted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
     let lineIdx = 0;
     let charIdx = 0;
     let allLines: { type: string; text: string }[] = [];
@@ -61,12 +80,12 @@ export default function TerminalWindow({ lines, speed = 25, startDelay = 1500, c
       cancelled = true;
       clearTimeout(timeout);
     };
-  }, [lines, speed, startDelay]);
+  }, [started, lines, speed, startDelay]);
 
   const currentLine = !done && currentLineIdx < lines.length ? lines[currentLineIdx] : null;
 
   return (
-    <div className={`overflow-hidden rounded-xl border border-slate-300/50 bg-slate-950 shadow-lg dark:border-slate-700 ${className}`}>
+    <div ref={containerRef} className={`overflow-hidden rounded-xl border border-slate-300/50 bg-slate-950 shadow-lg dark:border-slate-700 ${className}`}>
       <div className="flex items-center gap-2 border-b border-slate-700/50 bg-slate-900 px-4 py-2.5">
         <div className="flex gap-1.5">
           <div className="h-3 w-3 rounded-full bg-red-500"></div>
