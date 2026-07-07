@@ -41,12 +41,19 @@ const GITHUB_USERNAME = "luizking30";
 const BASE_URL = "https://api.github.com";
 
 async function fetchGitHub<T>(endpoint: string): Promise<T | null> {
+  const token = process.env.GITHUB_TOKEN;
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "portfolio-app",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
   const res = await fetch(`${BASE_URL}${endpoint}`, {
-    headers: {
-      Accept: "application/vnd.github+json",
-      "User-Agent": "portfolio-app",
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
+    headers,
     next: { revalidate: 3600 },
   });
 
