@@ -51,7 +51,7 @@ export default function ProductionProjects() {
   return (
     <section
       id="producao"
-      className="w-full bg-white px-4 py-20 dark:bg-slate-950 sm:px-6 lg:px-8 xl:px-12"
+      className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12"
     >
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center gap-3">

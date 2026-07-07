@@ -15,7 +15,7 @@ import {
   Code2,
   Lock,
 } from "lucide-react";
-import { LinkedInIcon, GitHubIcon } from "@/components/icons";
+import { LinkedInIcon, GitHubIcon, InstagramIcon } from "@/components/icons";
 import CountUp from "@/components/CountUp";
 
 interface HeroProps {
@@ -69,16 +69,8 @@ export default function Hero({
   return (
     <section
       id="inicio"
-      className="relative w-full overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 px-4 py-20 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 sm:px-6 lg:px-8 xl:px-12"
+      className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, currentColor 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div className="order-2 flex flex-col gap-6 lg:order-1">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-900/20 dark:text-emerald-400">
@@ -146,6 +138,15 @@ export default function Hero({
               GitHub
             </Link>
             <Link
+              href="https://instagram.com/luizamorim1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-pink-300 hover:text-pink-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-pink-500 dark:hover:text-pink-400"
+            >
+              <InstagramIcon className="h-4 w-4" />
+              Instagram
+            </Link>
+            <Link
               href={`mailto:${email}`}
               className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-400"
             >
@@ -167,14 +168,14 @@ export default function Hero({
         <div className="order-1 flex flex-col items-center justify-center gap-6 lg:order-2">
           <div className="relative">
             <div className="absolute inset-0 -z-10 rounded-full bg-blue-200/40 blur-3xl dark:bg-blue-500/20"></div>
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 opacity-50 blur-sm"></div>
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 opacity-50 blur-sm"></div>
             <Image
               src={avatarUrl}
               alt={name}
               width={360}
               height={360}
               priority
-              className="relative rounded-2xl object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80"
+              className="relative rounded-full object-cover shadow-2xl ring-4 ring-white/80 dark:ring-slate-700/80"
             />
           </div>
 

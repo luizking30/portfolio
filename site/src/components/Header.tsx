@@ -17,7 +17,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/80">
+    <header className="sticky top-0 z-50 w-full border-b border-blue-200/50 bg-blue-100/30 backdrop-blur-md dark:border-blue-800/50 dark:bg-blue-900/20">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="#inicio" className="text-xl font-bold text-slate-900 dark:text-white">
           LA
@@ -54,7 +54,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-slate-100 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 md:hidden">
+        <div className="border-t border-blue-200/50 bg-blue-100/30 px-4 py-4 dark:border-blue-800/50 dark:bg-blue-900/20 md:hidden">
           <nav className="flex flex-col gap-4">
             {navItems.map((item) => (
               <Link

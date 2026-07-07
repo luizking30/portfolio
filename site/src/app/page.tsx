@@ -43,9 +43,9 @@ export default async function Home() {
 
   const name = user.name || "Luiz Eduardo Mendonça Amorim";
   const location = user.location || "Taguatinga, DF";
-  const title = "Desenvolvedor Full Stack";
+  const title = "Engenheiro de IA";
   const description =
-    "Desenvolvo aplicações modernas, escaláveis e de alta performance com foco em soluções reais e resultados.";
+    "Arquiteto de soluções com IA, agentes autônomos e aplicações modernas. Construindo a próxima geração de software com IA.";
 
   return (
     <div className="flex min-h-screen flex-col">

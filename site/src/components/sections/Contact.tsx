@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Globe, Phone, CheckCircle2 } from "lucide-react";
-import { LinkedInIcon, GitHubIcon } from "@/components/icons";
+import { LinkedInIcon, GitHubIcon, InstagramIcon } from "@/components/icons";
 import AnimatedSection from "@/components/AnimatedSection";
 
 interface ContactProps {
@@ -23,7 +23,7 @@ export default function Contact({
   available,
 }: ContactProps) {
   return (
-    <section id="contato" className="w-full bg-white px-4 py-20 dark:bg-slate-950 sm:px-6 lg:px-8 xl:px-12">
+    <section id="contato" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Vamos conversar?</h2>
@@ -51,6 +51,15 @@ export default function Contact({
             >
               <GitHubIcon className="h-3.5 w-3.5" />
               GitHub
+            </Link>
+            <Link
+              href="https://instagram.com/luizamorim1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 px-3 py-2 text-xs font-semibold text-white transition hover:from-pink-600 hover:to-purple-600"
+            >
+              <InstagramIcon className="h-3.5 w-3.5" />
+              Instagram
             </Link>
             <Link
               href={`mailto:${email}`}

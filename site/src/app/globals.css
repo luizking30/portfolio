@@ -21,4 +21,45 @@
 
 body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background-color: #f0f7ff;
+}
+
+.dark body {
+  background-color: #0a1424;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 50% 0, rgba(0, 0, 0, 0.025) 2px, transparent 2px),
+    radial-gradient(circle at 0 25%, rgba(0, 0, 0, 0.025) 2px, transparent 2px),
+    radial-gradient(circle at 100% 25%, rgba(0, 0, 0, 0.025) 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.025) 2px, transparent 2px),
+    radial-gradient(circle at 0 75%, rgba(0, 0, 0, 0.025) 2px, transparent 2px),
+    radial-gradient(circle at 100% 75%, rgba(0, 0, 0, 0.025) 2px, transparent 2px);
+  background-size: 28px 48px;
+  animation: grid-pulse 3s ease-in-out infinite;
+}
+
+.dark body::after {
+  background-image:
+    radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 0 25%, rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 100% 25%, rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 0 75%, rgba(255, 255, 255, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 100% 75%, rgba(255, 255, 255, 0.03) 2px, transparent 2px);
+}
+
+@keyframes grid-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }

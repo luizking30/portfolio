@@ -78,6 +78,7 @@ const docDefinition = {
         { text: '✉ luiz.eduardo.amorim@hotmail.com\n' },
         { text: '🔗 LinkedIn: linkedin.com/in/luiz-amorim-5a0847400\n' },
         { text: '💻 GitHub: github.com/luizking30\n' },
+        { text: '🌐 Portfólio Digital: luizamorimdev.vercel.app\n' },
       ],
       style: 'subheader',
     },
@@ -87,7 +88,7 @@ const docDefinition = {
       style: 'sectionTitle',
     },
     {
-      text: 'Estágio em Desenvolvimento de Software (Java / Python), contribuindo com soluções web, automações e integrações em ambientes reais de negócio.',
+      text: 'Engenheiro de IA especializado em agentes inteligentes, automação e desenvolvimento acelerado de aplicações. Arquiteto de soluções com IA, agentes autônomos e aplicações modernas.',
       style: 'bodyText',
     },
 
@@ -100,6 +101,18 @@ const docDefinition = {
         { text: 'Bacharelado em Sistemas de Informação', bold: true },
         { text: ' | 4º Semestre\n' },
         { text: 'Foco em Engenharia de Software, Arquitetura de Sistemas e Banco de Dados.' },
+      ],
+      style: 'bodyText',
+    },
+
+    {
+      text: 'PORTFÓLIO DIGITAL',
+      style: 'sectionTitle',
+    },
+    {
+      text: [
+        { text: 'Acesse meu portfólio completo com projetos reais em produção, estatísticas do GitHub e contribuições: ', },
+        { text: 'luizamorimdev.vercel.app', link: 'https://luizamorimdev.vercel.app/', style: 'link' },
       ],
       style: 'bodyText',
     },
@@ -120,6 +133,7 @@ const docDefinition = {
       ul: [
         'Gestão operacional e técnica de assistência especializada em hardware, smartphones e tablets.',
         'Desenvolvimento e implementação de software interno para automatizar o fluxo de ordens de serviço e estoque da loja.',
+        'Fundador e desenvolvedor de 3 sistemas SaaS multi-tenant em produção: SharkGestão (automação para afiliados), SharkGestão ERP (gestão para assistência técnica) e Shark Fitness (gestão para personais trainers).',
       ],
       style: 'bodyText',
     },
@@ -128,7 +142,7 @@ const docDefinition = {
       style: 'jobTitle',
     },
     {
-      text: 'Período de 2 anos',
+      text: '12 meses',
       style: 'jobDetail',
     },
     {
@@ -144,11 +158,12 @@ const docDefinition = {
     },
     {
       ul: [
+        { text: [{ text: 'IA e Automação: ', bold: true }, 'Agentes inteligentes, automação com WhatsApp API, integração com IA.'] },
         { text: [{ text: 'Back-end: ', bold: true }, 'Java (Spring Boot, Spring Security), Python.'] },
         { text: [{ text: 'Banco de Dados: ', bold: true }, 'MySQL (Modelagem Relacional, Queries, CRUD).'] },
-        { text: [{ text: 'Front-end: ', bold: true }, 'HTML5, CSS3, JavaScript, Bootstrap 5, React, Thymeleaf.'] },
-        { text: [{ text: 'Arquitetura: ', bold: true }, 'MVC (Model-View-Controller), REST APIs.'] },
-        { text: [{ text: 'Ferramentas: ', bold: true }, 'Git, GitHub, Maven.'] },
+        { text: [{ text: 'Front-end: ', bold: true }, 'HTML5, CSS3, JavaScript, Bootstrap 5, React, Next.js, Thymeleaf.'] },
+        { text: [{ text: 'Arquitetura: ', bold: true }, 'MVC, REST APIs, SaaS, Multi-tenant.'] },
+        { text: [{ text: 'Ferramentas: ', bold: true }, 'Git, GitHub, Maven, Evolution API.'] },
       ],
       style: 'bodyText',
     },
@@ -159,10 +174,11 @@ const docDefinition = {
     },
     {
       ul: [
-        { text: [{ text: 'Front-end: ', bold: true }, 'HTML5, CSS3, JavaScript, Thymeleaf, Bootstrap 5, React - Senai.'] },
-        { text: [{ text: 'Back-end: ', bold: true }, 'Python, Java, Banco de Dados (MySQL) - Senai.'] },
-        { text: [{ text: 'Administração: ', bold: true }, 'Auxiliar Administrativo - Senai.'] },
-        { text: [{ text: 'Idiomas: ', bold: true }, 'Inglês nível intermediário - CILT Taguatinga.'] },
+        { text: [{ text: 'Front-end: ', bold: true }, 'HTML5, CSS3, JavaScript, React, Bootstrap 5, Thymeleaf - SENAI (2025, 6 meses).' ] },
+        { text: [{ text: 'Back-end: ', bold: true }, 'Python - SENAI (2024, 6 meses).' ] },
+        { text: [{ text: 'Java: ', bold: true }, 'Java, Spring Boot, orientação a objetos - SENAI (2024, 6 meses).' ] },
+        { text: [{ text: 'Administração: ', bold: true }, 'Auxiliar Administrativo - SENAI (12 meses).' ] },
+        { text: [{ text: 'Idiomas: ', bold: true }, 'Inglês - CILT Taguatinga (2016–2020, 4 anos).' ] },
       ],
       style: 'bodyText',
     },

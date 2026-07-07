@@ -64,7 +64,7 @@ export default function Experience() {
   return (
     <section
       id="experiencia"
-      className="w-full bg-slate-50 px-4 py-20 dark:bg-slate-900 sm:px-6 lg:px-8 xl:px-12"
+      className="w-full bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
     >
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center gap-3">

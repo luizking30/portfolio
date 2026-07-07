@@ -28,7 +28,7 @@ export default function About({
   ];
 
   return (
-    <section id="sobre" className="w-full bg-white px-4 py-20 dark:bg-slate-950 sm:px-6 lg:px-8 xl:px-12">
+    <section id="sobre" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">

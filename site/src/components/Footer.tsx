@@ -6,7 +6,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-slate-100 bg-white px-4 py-8 dark:border-slate-800 dark:bg-slate-950 sm:px-6 lg:px-8">
+    <footer className="w-full border-t border-blue-200/50 bg-blue-100/30 px-4 py-8 dark:border-blue-800/50 dark:bg-blue-900/20 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-sm text-slate-500 dark:text-slate-400">
           © {year} Luiz Amorim. Todos os direitos reservados.
