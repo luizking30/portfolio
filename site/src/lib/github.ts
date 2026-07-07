@@ -58,6 +58,10 @@ async function fetchGitHub<T>(endpoint: string): Promise<T | null> {
   });
 
   if (!res.ok) {
+    if (res.status === 409) {
+      // Repositório vazio ou sem commits
+      return null;
+    }
     console.warn(`GitHub API error: ${res.status} ${res.statusText} on ${endpoint}`);
     return null;
   }
@@ -163,12 +167,31 @@ export async function getRepoCommits(
   );
 }
 
+export async function getAllRepoCommits(repo: string): Promise<GitHubCommit[]> {
+  const commits: GitHubCommit[] = [];
+  let page = 1;
+  const perPage = 100;
+
+  while (true) {
+    const pageCommits = await fetchGitHub<GitHubCommit[]>(
+      `/repos/${GITHUB_USERNAME}/${repo}/commits?per_page=${perPage}&page=${page}`
+    );
+
+    if (!pageCommits || pageCommits.length === 0) break;
+
+    commits.push(...pageCommits);
+
+    if (pageCommits.length < perPage) break;
+    page++;
+  }
+
+  return commits;
+}
+
 export async function getTotalCommits(repos: GitHubRepo[]): Promise<number> {
   let total = 0;
-  // Limita aos 4 repositórios mais recentes para economizar requisições
-  const limitedRepos = getRecentRepos(repos, 4);
-  for (const repo of limitedRepos) {
-    const commits = await getRepoCommits(repo.name, 100);
+  for (const repo of repos) {
+    const commits = await getAllRepoCommits(repo.name);
     total += commits.length;
   }
   return total;
