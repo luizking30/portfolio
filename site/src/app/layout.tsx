@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     "Portfólio de Luiz Eduardo Mendonça Amorim, desenvolvedor Full Stack com foco em Java, Python, Spring Boot, React e Next.js. Veja projetos reais e estatísticas do GitHub.",
   keywords: ["desenvolvedor full stack", "Java", "Python", "Spring Boot", "React", "Next.js", "portfolio"],
   authors: [{ name: "Luiz Amorim" }],
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     title: "Luiz Amorim | Desenvolvedor Full Stack",
     description: "Portfólio de Luiz Amorim com projetos reais e integração com GitHub.",
