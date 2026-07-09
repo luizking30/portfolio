@@ -84,7 +84,7 @@ export default function Hero({
       {!booted && <BootSequence onDone={() => setBooted(true)} />}
       <section
         id="inicio"
-        className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
+        className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16"
       >
         <NeuralNetwork opacity={0.3} nodeCount={40} maxDistance={120} />
         <MatrixRain opacity={0.04} />
@@ -141,7 +141,7 @@ export default function Hero({
             <MagneticButton
               href="/curriculo-luiz-amorim.pdf"
               download
-              className="items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40 sm:px-5 sm:py-2.5 sm:text-sm"
+              className="items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-semibold text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:px-5 sm:py-3 sm:text-sm"
             >
               <Download className="h-4 w-4" />
               Baixar Currículo
@@ -150,7 +150,7 @@ export default function Hero({
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-400 sm:px-4 sm:py-2.5 sm:text-sm"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:px-4 sm:py-3 sm:text-sm"
             >
               <LinkedInIcon className="h-4 w-4" />
               LinkedIn
@@ -159,7 +159,7 @@ export default function Hero({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:text-white sm:px-4 sm:py-2.5 sm:text-sm"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:px-4 sm:py-3 sm:text-sm"
             >
               <GitHubIcon className="h-4 w-4" />
               GitHub
@@ -168,14 +168,14 @@ export default function Hero({
               href="https://instagram.com/luizamorim1"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-pink-300 hover:text-pink-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-pink-500 dark:hover:text-pink-400 sm:px-4 sm:py-2.5 sm:text-sm"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 transition hover:border-pink-300 hover:text-pink-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-pink-500 dark:hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:px-4 sm:py-3 sm:text-sm"
             >
               <InstagramIcon className="h-4 w-4" />
               Instagram
             </Link>
             <Link
               href={`mailto:${email}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-400 sm:px-4 sm:py-2.5 sm:text-sm"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:px-4 sm:py-3 sm:text-sm"
             >
               <Mail className="h-4 w-4" />
               Email
@@ -184,7 +184,7 @@ export default function Hero({
               href={whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-emerald-300 hover:text-emerald-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-emerald-500 dark:hover:text-emerald-400 sm:px-4 sm:py-2.5 sm:text-sm"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 transition hover:border-emerald-300 hover:text-emerald-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-emerald-500 dark:hover:text-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:px-4 sm:py-3 sm:text-sm"
             >
               <Phone className="h-4 w-4" />
               WhatsApp
@@ -216,7 +216,7 @@ export default function Hero({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
               >
                 Ver perfil
               </Link>

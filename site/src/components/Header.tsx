@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-blue-200/50 bg-blue-100/30 backdrop-blur-md dark:border-blue-800/50 dark:bg-blue-900/20">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="#inicio" className="text-xl font-bold text-slate-900 dark:text-white">
+        <Link href="#inicio" className="text-xl font-bold text-slate-900 dark:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded">
           LA
         </Link>
 
@@ -28,7 +28,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-slate-600 transition hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
+              className="text-sm font-medium text-slate-600 transition hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
             >
               {item.label}
             </Link>
@@ -37,7 +37,7 @@ export default function Header() {
           <a
             href="/curriculo-luiz-amorim.pdf"
             download
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             <Download className="h-4 w-4" />
             Currículo
@@ -45,7 +45,7 @@ export default function Header() {
         </nav>
 
         <button
-          className="md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-lg md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
         >
@@ -55,7 +55,7 @@ export default function Header() {
 
       <div
         className={`overflow-hidden border-t border-blue-200/50 bg-blue-100/30 transition-all duration-300 ease-in-out dark:border-blue-800/50 dark:bg-blue-900/20 md:hidden ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="flex flex-col gap-4 px-4 py-4">
@@ -64,7 +64,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="text-base font-medium text-slate-600 transition hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
+                className="py-1 text-base font-medium text-slate-600 transition hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
               >
                 {item.label}
               </Link>
@@ -74,7 +74,7 @@ export default function Header() {
               <a
                 href="/curriculo-luiz-amorim.pdf"
                 download
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               >
                 <Download className="h-4 w-4" />
                 Currículo

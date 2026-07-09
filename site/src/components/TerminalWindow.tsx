@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 
 interface TerminalWindowProps {
   lines: { type: "command" | "output" | "comment"; text: string }[];
@@ -15,23 +16,11 @@ export default function TerminalWindow({ lines, speed = 25, startDelay = 1500, c
   const [done, setDone] = useState(false);
   const [currentLineIdx, setCurrentLineIdx] = useState(0);
   const [started, setStarted] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const { ref: containerRef, inView } = useInView<HTMLDivElement>({ threshold: 0.2, once: true });
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    if (inView) setStarted(true);
+  }, [inView]);
 
   useEffect(() => {
     if (!started) return;

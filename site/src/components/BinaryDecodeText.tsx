@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface BinaryDecodeTextProps {
   text: string;
@@ -40,12 +41,9 @@ export default function BinaryDecodeText({
   );
   const [started, setStarted] = useState(false);
   const containerRef = useRef<HTMLSpanElement>(null);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     if (reduced) {
       setChars(text.split("").map((c) => ({ phase: "text" as Phase, display: c })));
       setStarted(true);
@@ -64,14 +62,10 @@ export default function BinaryDecodeText({
 
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
-  }, [text]);
+  }, [text, reduced]);
 
   useEffect(() => {
     if (!started) return;
-
-    const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reduced) return;
 
@@ -105,7 +99,7 @@ export default function BinaryDecodeText({
     });
 
     return () => timers.forEach(clearTimeout);
-  }, [started, text, speed, stagger, startDelay]);
+  }, [started, text, speed, stagger, startDelay, reduced]);
 
   return (
     <span

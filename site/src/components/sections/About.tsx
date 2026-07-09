@@ -6,6 +6,7 @@ import ProgressBar from "@/components/ProgressBar";
 import ScrambleText from "@/components/ScrambleText";
 import BinaryDecodeText from "@/components/BinaryDecodeText";
 import CodeTyping from "@/components/CodeTyping";
+import SectionHeader from "@/components/SectionHeader";
 
 interface AboutProps {
   text: string;
@@ -34,23 +35,18 @@ export default function About({
   ];
 
   return (
-    <section id="sobre" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
+    <section id="sobre" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
       <AnimatedSection className="mx-auto max-w-7xl">
-        <div className="mb-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-            <User className="h-5 w-5" />
-          </div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-            <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// sobre_mim</span>
-            <br />
-            <ScrambleText text="Sobre" /> <BinaryDecodeText text="mim" speed={200} stagger={50} />
-          </h2>
-        </div>
+        <SectionHeader
+          icon={<User className="h-5 w-5" />}
+          comment="// sobre_mim"
+          title={<><ScrambleText text="Sobre" /> <BinaryDecodeText text="mim" speed={200} stagger={50} /></>}
+        />
 
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900 sm:p-8">
             <TerminalPrompt text="system: describe_yourself()" className="mb-3 text-xs" speed={30} />
-            <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
+            <p className="max-w-prose text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               <TypewriterOnView text={text} speed={15} />
             </p>
             <CodeTyping

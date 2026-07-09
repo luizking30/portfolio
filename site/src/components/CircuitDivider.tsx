@@ -1,37 +1,24 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useInView } from "@/hooks/useInView";
 
 export default function CircuitDivider() {
   const svgRef = useRef<SVGSVGElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animatedRef = useRef(false);
+  const { ref: containerRef, inView } = useInView<HTMLDivElement>({ threshold: 0.1, once: true });
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !animatedRef.current) {
-          animatedRef.current = true;
-          const svg = svgRef.current;
-          if (!svg) return;
-          const paths = svg.querySelectorAll<SVGPathElement>(".circuit-path");
-          paths.forEach((path, idx) => {
-            const length = path.getTotalLength();
-            path.style.strokeDasharray = `${length}`;
-            path.style.strokeDashoffset = `${length}`;
-            path.style.animation = `circuit-draw 1.5s ease-out ${idx * 0.15}s forwards`;
-          });
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, []);
+    if (!inView) return;
+    const svg = svgRef.current;
+    if (!svg) return;
+    const paths = svg.querySelectorAll<SVGPathElement>(".circuit-path");
+    paths.forEach((path, idx) => {
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = `${length}`;
+      path.style.strokeDashoffset = `${length}`;
+      path.style.animation = `circuit-draw 1.5s ease-out ${idx * 0.15}s forwards`;
+    });
+  }, [inView]);
 
   return (
     <div className="relative h-12 w-full overflow-hidden" aria-hidden="true">

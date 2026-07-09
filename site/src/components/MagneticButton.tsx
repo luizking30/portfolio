@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, ReactNode, MouseEvent } from "react";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -22,7 +23,7 @@ export default function MagneticButton({
   strength = 0.3,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
-  const isTouchDevice = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+  const isTouchDevice = useIsTouchDevice();
 
   const handleMouseMove = (e: MouseEvent<HTMLAnchorElement>) => {
     if (isTouchDevice) return;

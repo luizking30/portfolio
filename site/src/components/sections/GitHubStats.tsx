@@ -5,6 +5,7 @@ import CountUp from "@/components/CountUp";
 import GitLog from "@/components/GitLog";
 import ProgressBar from "@/components/ProgressBar";
 import ScrambleText from "@/components/ScrambleText";
+import SectionHeader from "@/components/SectionHeader";
 
 interface GitHubStatsProps {
   publicRepos: number;
@@ -33,19 +34,15 @@ export default function GitHubStats({
   ];
 
   return (
-    <section id="github-stats" className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 text-slate-900 dark:bg-blue-900/20 dark:text-white sm:px-6 lg:px-8 xl:px-12">
+    <section id="github-stats" className="relative w-full overflow-hidden bg-blue-100/30 px-4 py-20 text-slate-900 dark:bg-blue-900/20 dark:text-white sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
       <GitLog />
       <AnimatedSection className="relative z-10 mx-auto max-w-7xl">
-        <div className="mb-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-200/50 text-blue-600 dark:bg-white/10 dark:text-white">
-            <GitHubIcon className="h-5 w-5" />
-          </div>
-          <h2 className="text-2xl font-bold sm:text-3xl">
-            <span className="font-mono text-sm font-normal text-blue-400">// git_stats</span>
-            <br />
-            <ScrambleText text="Estatísticas do GitHub" />
-          </h2>
-        </div>
+        <SectionHeader
+          icon={<GitHubIcon className="h-5 w-5" />}
+          comment="// git_stats"
+          title={<ScrambleText text="Estatísticas do GitHub" />}
+          iconClassName="bg-blue-200/50 text-blue-600 dark:bg-white/10 dark:text-white"
+        />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
@@ -82,7 +79,7 @@ export default function GitHubStats({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             <GitHubIcon className="h-4 w-4" />
             Ver perfil no GitHub

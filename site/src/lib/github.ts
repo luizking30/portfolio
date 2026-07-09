@@ -189,12 +189,9 @@ export async function getAllRepoCommits(repo: string): Promise<GitHubCommit[]> {
 }
 
 export async function getTotalCommits(repos: GitHubRepo[]): Promise<number> {
-  let total = 0;
-  for (const repo of repos) {
-    const commits = await getAllRepoCommits(repo.name);
-    total += commits.length;
-  }
-  return total;
+  const commitPromises = repos.map((repo) => getAllRepoCommits(repo.name));
+  const allCommits = await Promise.all(commitPromises);
+  return allCommits.reduce((total, commits) => total + commits.length, 0);
 }
 
 export async function getContributions(): Promise<Contribution[]> {

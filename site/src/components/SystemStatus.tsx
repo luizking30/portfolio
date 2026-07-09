@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Cpu, MemoryStick, HardDrive, Activity } from "lucide-react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface Metric {
   icon: typeof Cpu;
@@ -20,9 +21,9 @@ export default function SystemStatus() {
     { icon: Activity, label: "NET", value: 72, max: 100, unit: "ms", color: "bg-amber-500" },
   ]);
   const [uptime, setUptime] = useState(0);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
 
     let interval: ReturnType<typeof setInterval>;
@@ -57,7 +58,7 @@ export default function SystemStatus() {
       clearInterval(interval);
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, []);
+  }, [reduced]);
 
   const hours = Math.floor(uptime / 3600);
   const mins = Math.floor((uptime % 3600) / 60);
@@ -67,10 +68,10 @@ export default function SystemStatus() {
   return (
     <div className="fixed bottom-6 left-6 z-[55] hidden w-56 rounded-xl border border-slate-200 bg-white/90 p-3 shadow-lg backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/90 lg:block">
       <div className="mb-2 flex items-center justify-between">
-        <span className="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400">
+        <span className="font-mono text-xs font-bold text-slate-500 dark:text-slate-400">
           SYSTEM_STATUS
         </span>
-        <span className="flex items-center gap-1 font-mono text-[10px] text-emerald-500">
+        <span className="flex items-center gap-1 font-mono text-xs text-emerald-500">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
           ONLINE
         </span>

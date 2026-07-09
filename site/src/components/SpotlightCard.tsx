@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, ReactNode, MouseEvent } from "react";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
 
 interface SpotlightCardProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface SpotlightCardProps {
 
 export default function SpotlightCard({ children, className = "", tilt = true }: SpotlightCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isTouchDevice = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+  const isTouchDevice = useIsTouchDevice();
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 
 const commits = [
   "a3f2c1 feat: add autonomous agent pipeline",
@@ -22,21 +22,7 @@ const commits = [
 ];
 
 export default function GitLog({ className = "" }: { className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        setVisible(entries[0].isIntersecting);
-      },
-      { threshold: 0 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, inView: visible } = useInView<HTMLDivElement>({ threshold: 0 });
 
   return (
     <div ref={ref} className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>

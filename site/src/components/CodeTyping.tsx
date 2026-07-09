@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface CodeTypingProps {
   code: string;
@@ -84,11 +85,11 @@ export default function CodeTyping({
   const [currentChar, setCurrentChar] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const startedRef = useRef(false);
+  const reduced = usePrefersReducedMotion();
 
   const allLines = code.split("\n");
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
       setLines(allLines);
       setCurrentLine(allLines.length);
@@ -129,7 +130,7 @@ export default function CodeTyping({
 
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
-  }, [code, speed]);
+  }, [code, speed, reduced]);
 
   const isTyping = currentLine < allLines.length;
 

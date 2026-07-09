@@ -27,7 +27,7 @@ export default function Contact({
   available,
 }: ContactProps) {
   return (
-    <section id="contato" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
+    <section id="contato" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
@@ -38,7 +38,7 @@ export default function Contact({
           <div className="mt-3 mb-2">
             <TerminalPrompt text="await response() — initializing contact protocols..." className="text-xs" speed={25} />
           </div>
-          <p className="mt-2 text-slate-600 dark:text-slate-300">
+          <p className="mt-2 max-w-prose text-slate-600 dark:text-slate-300">
             Estou sempre aberto para novas oportunidades e projetos interessantes.
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function Contact({
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2 text-xs font-semibold text-white transition hover:bg-blue-700"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               <LinkedInIcon className="h-3.5 w-3.5" />
               LinkedIn
@@ -58,7 +58,7 @@ export default function Contact({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3 py-2.5 text-xs font-semibold text-white transition hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               <GitHubIcon className="h-3.5 w-3.5" />
               GitHub
@@ -67,14 +67,14 @@ export default function Contact({
               href="https://instagram.com/luizamorim1"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 px-3 py-2 text-xs font-semibold text-white transition hover:from-pink-600 hover:to-purple-600"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 px-3 py-2.5 text-xs font-semibold text-white transition hover:from-pink-600 hover:to-purple-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               <InstagramIcon className="h-3.5 w-3.5" />
               Instagram
             </Link>
             <Link
               href={`mailto:${email}`}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-400"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               <Mail className="h-3.5 w-3.5" />
               Email
@@ -83,7 +83,7 @@ export default function Contact({
               href={whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-600"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 px-3 py-2.5 text-xs font-semibold text-white transition hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               <Phone className="h-3.5 w-3.5" />
               WhatsApp
@@ -96,7 +96,7 @@ export default function Contact({
                 <Mail className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Email</div>
+                <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Email</div>
                 <div className="text-xs font-semibold break-all text-slate-900 dark:text-white">{email}</div>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function Contact({
                 <MapPin className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Localização</div>
+                <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Localização</div>
                 <div className="text-xs font-semibold text-slate-900 dark:text-white">{location}</div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function Contact({
                 <Globe className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Website</div>
+                <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Website</div>
                 <div className="text-xs font-semibold text-slate-900 dark:text-white">{website}</div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function Contact({
                 <CheckCircle2 className="h-4 w-4" />
               </div>
               <div>
-                <div className="text-[10px] font-medium text-slate-500 dark:text-slate-400">Disponibilidade</div>
+                <div className="text-xs font-medium text-slate-500 dark:text-slate-400">Disponibilidade</div>
                 <div className="text-xs font-semibold text-slate-900 dark:text-white">
                   {available ? "Imediata" : "A combinar"}
                 </div>

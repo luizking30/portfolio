@@ -5,6 +5,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import SpotlightCard from "@/components/SpotlightCard";
 import ProgressBar from "@/components/ProgressBar";
 import ScrambleText from "@/components/ScrambleText";
+import SectionHeader from "@/components/SectionHeader";
 
 interface ProductionProject {
   name: string;
@@ -54,19 +55,15 @@ export default function ProductionProjects() {
   return (
     <section
       id="producao"
-      className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12"
+      className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16"
     >
       <AnimatedSection className="mx-auto max-w-7xl">
-        <div className="mb-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400">
-            <Rocket className="h-5 w-5" />
-          </div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-            <span className="font-mono text-sm font-normal text-emerald-500 dark:text-emerald-400">// producao</span>
-            <br />
-            <ScrambleText text="Projetos em produção" />
-          </h2>
-        </div>
+        <SectionHeader
+          icon={<Rocket className="h-5 w-5" />}
+          comment="// producao"
+          title={<ScrambleText text="Projetos em produção" />}
+          iconClassName="bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400"
+        />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((project, idx) => {
@@ -91,11 +88,11 @@ export default function ProductionProjects() {
                   <div className="absolute right-4 top-4 z-10 flex gap-2 opacity-100 transition-opacity duration-300 group-hover:opacity-100 sm:opacity-100">
                     {!isPlaceholder && (
                       <>
-                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2.5 py-1 text-[10px] font-bold text-white backdrop-blur-sm">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-sm">
                           <Rocket className="h-3 w-3" />
                           Em produção
                         </span>
-                        <span className="inline-flex items-center gap-1 rounded-full bg-slate-700/90 px-2.5 py-1 text-[10px] font-bold text-white backdrop-blur-sm">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-slate-700/90 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-sm">
                           <Lock className="h-3 w-3" />
                           Privado
                         </span>
@@ -127,7 +124,7 @@ export default function ProductionProjects() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700 transition group-hover:border-emerald-300 group-hover:text-emerald-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:group-hover:border-emerald-500 dark:group-hover:text-emerald-400"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-700 transition group-hover:border-emerald-300 group-hover:text-emerald-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:group-hover:border-emerald-500 dark:group-hover:text-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     >
                       <ExternalLink className="h-4 w-4" />
                       Acessar

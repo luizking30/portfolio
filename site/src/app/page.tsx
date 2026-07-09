@@ -53,11 +53,17 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+      >
+        Pular para o conteúdo
+      </a>
       <ScrollProgress />
       <CommandPalette />
       <SystemStatus />
       <Header />
-      <main className="flex-1">
+      <main id="conteudo" className="flex-1">
         <Hero
           name={name}
           title={title}

@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useEffect, ReactNode } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
 
 interface ParallaxProps {
   children: ReactNode;
@@ -10,13 +12,11 @@ interface ParallaxProps {
 
 export default function Parallax({ children, className = "", speed = 0.3 }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduced = usePrefersReducedMotion();
+  const isTouch = useIsTouchDevice();
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) return;
+    if (reduced || isTouch) return;
 
     const handleScroll = () => {
       const el = ref.current;
@@ -29,7 +29,7 @@ export default function Parallax({ children, className = "", speed = 0.3 }: Para
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [speed]);
+  }, [speed, reduced, isTouch]);
 
   return (
     <div ref={ref} className={`transition-transform duration-100 ease-out ${className}`}>

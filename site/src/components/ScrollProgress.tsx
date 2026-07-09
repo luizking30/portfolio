@@ -32,7 +32,7 @@ export default function ScrollProgress() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none fixed right-4 top-3 z-[60] font-mono text-[10px] font-bold tabular-nums"
+        className="pointer-events-none fixed right-4 top-3 z-[60] font-mono text-xs font-bold tabular-nums"
         style={{ color }}
         aria-hidden="true"
       >

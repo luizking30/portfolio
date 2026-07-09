@@ -83,7 +83,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
   const monthLabels = getMonthLabels(weeks);
 
   return (
-    <section id="contribuicoes" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12">
+    <section id="contribuicoes" className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -110,7 +110,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
                   {monthLabels.map((m, i) => (
                     <span
                       key={i}
-                      className="absolute text-[10px] text-slate-500 dark:text-slate-400"
+                      className="absolute text-xs text-slate-500 dark:text-slate-400"
                       style={{ left: `${m.col * 13}px` }}
                     >
                       {m.label}
@@ -144,7 +144,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
                   ))}
                 </div>
               </div>
-              <div className="mt-2 text-[10px] text-slate-400 dark:text-slate-500 sm:hidden">
+              <div className="mt-2 text-xs text-slate-500 dark:text-slate-400 sm:hidden">
                 ← Arraste para ver mais →
               </div>
             </div>

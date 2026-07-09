@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface ScrambleTextProps {
   text: string;
@@ -19,15 +20,11 @@ export default function ScrambleText({
   const [started, setStarted] = useState(false);
   const rafRef = useRef<number>(0);
   const startRef = useRef<number>(0);
-  const reduced = useRef(false);
+  const reduced = usePrefersReducedMotion();
   const containerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    reduced.current =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduced.current) {
+    if (reduced) {
       setDisplay(text);
       setStarted(true);
       return;
@@ -47,10 +44,10 @@ export default function ScrambleText({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [text]);
+  }, [text, reduced]);
 
   useEffect(() => {
-    if (!started || reduced.current) return;
+    if (!started || reduced) return;
 
     let frame: number;
     const duration = text.length * speed;
@@ -83,7 +80,7 @@ export default function ScrambleText({
 
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [started, text, speed, scrambleChars]);
+  }, [started, text, speed, scrambleChars, reduced]);
 
   return (
     <span ref={containerRef} className={className} aria-label={text}>

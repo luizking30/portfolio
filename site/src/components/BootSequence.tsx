@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 
 const bootLines = [
   { text: "> initializing portfolio system...", delay: 0 },
-  { text: "> loading AI modules............ ✓", delay: 400 },
-  { text: "> mounting /components........... ✓", delay: 700 },
-  { text: "> connecting to GitHub API....... ✓", delay: 1000 },
-  { text: "> compiling neural pathways...... ✓", delay: 1300 },
-  { text: "> system ready ▸", delay: 1700 },
+  { text: "> loading AI modules............ ✓", delay: 150 },
+  { text: "> mounting /components........... ✓", delay: 300 },
+  { text: "> connecting to GitHub API....... ✓", delay: 450 },
+  { text: "> compiling neural pathways...... ✓", delay: 600 },
+  { text: "> system ready ▸", delay: 800 },
 ];
 
 export default function BootSequence({ onDone, className = "" }: { onDone: () => void; className?: string }) {
@@ -20,8 +20,8 @@ export default function BootSequence({ onDone, className = "" }: { onDone: () =>
     bootLines.forEach((_, idx) => {
       timers.push(setTimeout(() => setVisibleLines(idx + 1), bootLines[idx].delay));
     });
-    timers.push(setTimeout(() => setFadeout(true), 2200));
-    timers.push(setTimeout(() => onDone(), 2800));
+    timers.push(setTimeout(() => setFadeout(true), 1000));
+    timers.push(setTimeout(() => onDone(), 1200));
     return () => timers.forEach(clearTimeout);
   }, [onDone]);
 
@@ -45,7 +45,7 @@ export default function BootSequence({ onDone, className = "" }: { onDone: () =>
       </div>
       <button
         onClick={() => onDone()}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-lg border border-slate-700 px-4 py-2 font-mono text-xs text-slate-400 transition hover:border-slate-500 hover:text-slate-200 sm:left-auto sm:right-8 sm:translate-x-0"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-lg border border-slate-700 px-4 py-2.5 font-mono text-xs text-slate-400 transition hover:border-slate-500 hover:text-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 sm:left-auto sm:right-8 sm:translate-x-0"
       >
         Pular ▸
       </button>

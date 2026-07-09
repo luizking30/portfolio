@@ -6,6 +6,7 @@ import SpotlightCard from "@/components/SpotlightCard";
 import ProgressBar from "@/components/ProgressBar";
 import ScrambleText from "@/components/ScrambleText";
 import BinaryDecodeText from "@/components/BinaryDecodeText";
+import SectionHeader from "@/components/SectionHeader";
 import type { GitHubRepo } from "@/lib/github";
 import { getTimeAgo } from "@/lib/github";
 
@@ -28,25 +29,20 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
   return (
     <section
       id="projetos"
-      className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12"
+      className="w-full px-4 py-20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16"
     >
       <AnimatedSection className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-              <Folder className="h-5 w-5" />
-            </div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-              <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// repositorios_publicos</span>
-              <br />
-              <ScrambleText text="Projetos" /> <BinaryDecodeText text="públicos" speed={200} stagger={50} />
-            </h2>
-          </div>
+          <SectionHeader
+            icon={<Folder className="h-5 w-5" />}
+            comment="// repositorios_publicos"
+            title={<><ScrambleText text="Projetos" /> <BinaryDecodeText text="públicos" speed={200} stagger={50} /></>}
+          />
           <Link
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 sm:inline-flex"
+            className="hidden items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 sm:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
           >
             Ver todos no GitHub
             <ExternalLink className="h-4 w-4" />
@@ -111,7 +107,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
                     href={repo.html_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700 transition group-hover:border-blue-300 group-hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:group-hover:border-blue-500 dark:group-hover:text-blue-400"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-700 transition group-hover:border-blue-300 group-hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:group-hover:border-blue-500 dark:group-hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   >
                     <ExternalLink className="h-4 w-4" />
                     Ver repositório
@@ -127,7 +123,7 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
           >
             Ver todos no GitHub
             <ExternalLink className="h-4 w-4" />

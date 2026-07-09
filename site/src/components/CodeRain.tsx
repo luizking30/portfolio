@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 
 const snippets = [
   "const ai = await model.generate({\n  prompt: 'build future',\n  agents: true,\n});",
@@ -12,8 +13,7 @@ const snippets = [
 
 export default function CodeRain({ className = "" }: { className?: string }) {
   const [lines, setLines] = useState<{ text: string; top: number; left: number; delay: number }[]>([]);
-  const [visible, setVisible] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const { ref: containerRef, inView: visible } = useInView<HTMLDivElement>({ threshold: 0.1, once: true });
 
   useEffect(() => {
     const generated = snippets.map((snippet, idx) => ({
@@ -23,20 +23,6 @@ export default function CodeRain({ className = "" }: { className?: string }) {
       delay: idx * 800,
     }));
     setLines(generated);
-
-    const el = containerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
   }, []);
 
   return (

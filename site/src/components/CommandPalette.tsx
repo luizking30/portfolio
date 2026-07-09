@@ -67,7 +67,7 @@ export default function CommandPalette() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-[55] flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-500 shadow-lg transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:text-blue-400 md:px-3"
+        className="fixed bottom-6 right-6 z-[55] flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs font-medium text-slate-500 shadow-lg transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-blue-500 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 md:px-3"
         aria-label="Abrir paleta de comandos"
       >
         <Search className="h-3.5 w-3.5" />
@@ -136,7 +136,7 @@ export default function CommandPalette() {
             </li>
           ))}
         </ul>
-        <div className="border-t border-slate-100 px-4 py-2 text-[10px] text-slate-400 dark:border-slate-800">
+        <div className="border-t border-slate-100 px-4 py-2 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
           <kbd className="rounded bg-slate-100 px-1.5 py-0.5 font-mono dark:bg-slate-800">↑↓</kbd> navegar
           <span className="mx-2">•</span>
           <kbd className="rounded bg-slate-100 px-1.5 py-0.5 font-mono dark:bg-slate-800">↵</kbd> selecionar

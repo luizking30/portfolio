@@ -3,6 +3,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import TypewriterOnView from "@/components/TypewriterOnView";
 import ProgressBar from "@/components/ProgressBar";
 import ScrambleText from "@/components/ScrambleText";
+import SectionHeader from "@/components/SectionHeader";
 
 interface ExperienceItem {
   period: string;
@@ -69,19 +70,14 @@ export default function Experience() {
   return (
     <section
       id="experiencia"
-      className="w-full bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
+      className="w-full bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16"
     >
       <AnimatedSection className="mx-auto max-w-7xl">
-        <div className="mb-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-            <Briefcase className="h-5 w-5" />
-          </div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-            <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// historico</span>
-            <br />
-            <ScrambleText text="Experiência" />
-          </h2>
-        </div>
+        <SectionHeader
+          icon={<Briefcase className="h-5 w-5" />}
+          comment="// historico"
+          title={<ScrambleText text="Experiência" />}
+        />
 
         <div className="relative">
           <div className="absolute left-4 top-0 h-full w-0.5 bg-slate-200 dark:bg-slate-700 sm:left-5"></div>
@@ -97,7 +93,7 @@ export default function Experience() {
                       <Icon className="h-4 w-4" />
                       {item.period}
                     </div>
-                    <span className="rounded bg-slate-100 px-2 py-0.5 font-mono text-[10px] text-slate-400 dark:bg-slate-800 dark:text-slate-500">
+                    <span className="rounded bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
                       {commitHashes[idx % commitHashes.length]}
                     </span>
                   </div>
@@ -107,7 +103,7 @@ export default function Experience() {
                   <div className="mb-3 text-sm font-medium text-slate-500 dark:text-slate-400">
                     {item.company}
                   </div>
-                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  <p className="max-w-prose text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                     <TypewriterOnView text={item.description} speed={10} />
                   </p>
                 </div>

@@ -3,6 +3,7 @@ import TechIcon from "@/components/TechIcons";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProgressBar from "@/components/ProgressBar";
 import ScrambleText from "@/components/ScrambleText";
+import SectionHeader from "@/components/SectionHeader";
 
 interface TechnologiesProps {
   languages: string[];
@@ -33,19 +34,14 @@ export default function Technologies({ languages }: TechnologiesProps) {
   return (
     <section
       id="tecnologias"
-      className="w-full bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12"
+      className="w-full bg-blue-100/30 px-4 py-20 dark:bg-blue-900/20 sm:px-6 lg:px-8 xl:px-12 2xl:px-16"
     >
       <AnimatedSection className="mx-auto max-w-7xl">
-        <div className="mb-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-            <Code2 className="h-5 w-5" />
-          </div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-            <span className="font-mono text-sm font-normal text-blue-500 dark:text-blue-400">// stack</span>
-            <br />
-            <ScrambleText text="Tecnologias" />
-          </h2>
-        </div>
+        <SectionHeader
+          icon={<Code2 className="h-5 w-5" />}
+          comment="// stack"
+          title={<ScrambleText text="Tecnologias" />}
+        />
 
         <div className="relative overflow-hidden">
           <div className="flex w-max gap-3 animate-marquee">
@@ -56,7 +52,7 @@ export default function Technologies({ languages }: TechnologiesProps) {
               >
                 <TechIcon name={tech} className="h-5 w-5" />
                 {tech}
-                <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] text-green-500 opacity-0 transition-opacity group-hover/tech:opacity-100">
+                <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-xs text-green-500 opacity-0 transition-opacity group-hover/tech:opacity-100">
                   compiling {tech.toLowerCase()}... ✓
                 </span>
               </span>

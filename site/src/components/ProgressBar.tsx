@@ -1,27 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 
 export default function ProgressBar({ className = "", delay = 0 }: { className?: string; delay?: number }) {
   const [progress, setProgress] = useState(0);
   const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.3, once: true });
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    if (inView) setStarted(true);
+  }, [inView]);
 
   useEffect(() => {
     if (!started) return;
@@ -45,7 +34,7 @@ export default function ProgressBar({ className = "", delay = 0 }: { className?:
   const empty = 10 - filled;
 
   return (
-    <div ref={ref} className={`font-mono text-xs text-blue-500/60 dark:text-blue-400/60 ${className}`}>
+    <div ref={ref} className={`font-mono text-xs text-blue-500/80 dark:text-blue-400/80 ${className}`}>
       <span className="text-green-400">[</span>
       {"█".repeat(filled)}
       {"░".repeat(empty)}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 
 interface TypewriterOnViewProps {
   text: string;
@@ -10,25 +11,16 @@ interface TypewriterOnViewProps {
 }
 
 export default function TypewriterOnView({ text, className = "", speed = 25, startDelay = 200 }: TypewriterOnViewProps) {
-  const ref = useRef<HTMLSpanElement>(null);
+  const { ref, inView } = useInView<HTMLSpanElement>({ threshold: 0.3 });
   const [displayed, setDisplayed] = useState("");
   const [started, setStarted] = useState(false);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !started) {
-          setStarted(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [started]);
+    if (inView && !started) {
+      setStarted(true);
+    }
+  }, [inView, started]);
 
   useEffect(() => {
     if (!started) return;

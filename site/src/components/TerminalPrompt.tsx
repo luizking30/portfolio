@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "@/hooks/useInView";
 
 interface TerminalPromptProps {
   text: string;
@@ -20,23 +21,11 @@ export default function TerminalPrompt({
   const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
   const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.2, once: true });
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    if (inView) setStarted(true);
+  }, [inView]);
 
   useEffect(() => {
     if (!started) return;
