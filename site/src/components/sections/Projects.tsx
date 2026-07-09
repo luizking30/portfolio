@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Folder, Star, GitFork, ExternalLink, Clock, Code2, ArrowUpRight } from "lucide-react";
+import { Folder, Star, GitFork, ExternalLink, Clock, Code2 } from "lucide-react";
 import TechIcon from "@/components/TechIcons";
 import AnimatedSection from "@/components/AnimatedSection";
 import SpotlightCard from "@/components/SpotlightCard";
@@ -66,17 +66,11 @@ export default function Projects({ repos, githubUrl }: ProjectsProps) {
                     )}
                   </div>
                   <h3 className="mt-auto text-xl font-bold text-white drop-shadow-sm">{repo.name}</h3>
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-100 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100">
-                    <span className="inline-flex items-center gap-2 rounded-lg bg-white/90 px-4 py-2 text-sm font-semibold text-slate-900">
-                      <ArrowUpRight className="h-4 w-4" />
-                      Ver projeto
-                    </span>
-                  </div>
                 </div>
 
                 <div className="flex flex-1 flex-col justify-between p-5">
                   <p className="mb-4 line-clamp-3 text-sm text-slate-600 dark:text-slate-300">
-                    {repo.description || "Sem descrição disponível."}
+                    {repo.description || `Projeto em ${repo.language || "código"} desenvolvido e publicado no GitHub.`}
                   </p>
 
                   <div className="mb-4 flex flex-wrap gap-2">
