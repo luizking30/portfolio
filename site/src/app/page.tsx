@@ -45,7 +45,7 @@ export default async function Home() {
   const lastCommit = getLastCommitInfo(events);
   const contributions = await getContributions();
 
-  const name = user.name || "Luiz Eduardo Mendonça Amorim";
+  const name = "Luiz Amorim";
   const location = user.location || "Taguatinga, DF";
   const title = "Engenheiro de IA";
   const description =
