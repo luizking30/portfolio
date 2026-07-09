@@ -94,7 +94,7 @@ export default function TerminalWindow({ lines, speed = 25, startDelay = 1500, c
         </div>
         <span className="ml-2 text-xs font-medium text-slate-400">luiz@portfolio: ~/ai-engineer</span>
       </div>
-      <div className="p-4 font-mono text-sm leading-relaxed">
+      <div className="overflow-x-auto p-4 font-mono text-sm leading-relaxed">
         {visibleLines.map((line, idx) => (
           <div key={idx} className="mb-1">
             {line.type === "command" && (

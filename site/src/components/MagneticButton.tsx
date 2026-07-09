@@ -22,8 +22,10 @@ export default function MagneticButton({
   strength = 0.3,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
+  const isTouchDevice = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
 
   const handleMouseMove = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (isTouchDevice) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -33,6 +35,7 @@ export default function MagneticButton({
   };
 
   const handleMouseLeave = () => {
+    if (isTouchDevice) return;
     const el = ref.current;
     if (!el) return;
     el.style.transform = "translate(0, 0)";

@@ -42,8 +42,8 @@ export default function GitLog({ className = "" }: { className?: string }) {
     <div ref={ref} className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
       <div className={visible ? "animate-git-log" : ""} style={visible ? undefined : { animationPlayState: "paused" }}>
         {[...commits, ...commits].map((commit, idx) => (
-          <div key={idx} className="whitespace-nowrap py-0.5 font-mono text-[10px] text-blue-500/8 dark:text-blue-400/8">
-            <span className="text-green-400/8">commit </span>
+          <div key={idx} className="whitespace-nowrap py-0.5 font-mono text-[10px] text-blue-500/15 dark:text-blue-400/15">
+            <span className="text-green-400/15">commit </span>
             {commit}
           </div>
         ))}

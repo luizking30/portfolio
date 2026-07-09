@@ -45,7 +45,7 @@ export default function BootSequence({ onDone, className = "" }: { onDone: () =>
       </div>
       <button
         onClick={() => onDone()}
-        className="absolute bottom-8 right-8 rounded-lg border border-slate-700 px-4 py-2 font-mono text-xs text-slate-400 transition hover:border-slate-500 hover:text-slate-200"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-lg border border-slate-700 px-4 py-2 font-mono text-xs text-slate-400 transition hover:border-slate-500 hover:text-slate-200 sm:left-auto sm:right-8 sm:translate-x-0"
       >
         Pular ▸
       </button>

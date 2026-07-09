@@ -15,8 +15,10 @@ export default function TiltCard({
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
+  const isTouchDevice = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
 
   function handleMouseMove(e: React.MouseEvent) {
+    if (isTouchDevice) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -32,6 +34,7 @@ export default function TiltCard({
   }
 
   function handleMouseLeave() {
+    if (isTouchDevice) return;
     setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)");
   }
 

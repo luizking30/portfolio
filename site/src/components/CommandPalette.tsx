@@ -116,6 +116,7 @@ export default function CommandPalette() {
             <li key={cmd.href}>
               <button
                 onMouseEnter={() => setActive(idx)}
+                onTouchStart={() => setActive(idx)}
                 onClick={() => {
                   window.location.hash = cmd.href;
                   setOpen(false);

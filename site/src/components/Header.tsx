@@ -53,9 +53,12 @@ export default function Header() {
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-blue-200/50 bg-blue-100/30 px-4 py-4 dark:border-blue-800/50 dark:bg-blue-900/20 md:hidden">
-          <nav className="flex flex-col gap-4">
+      <div
+        className={`overflow-hidden border-t border-blue-200/50 bg-blue-100/30 transition-all duration-300 ease-in-out dark:border-blue-800/50 dark:bg-blue-900/20 md:hidden ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col gap-4 px-4 py-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -78,8 +81,7 @@ export default function Header() {
               </a>
             </div>
           </nav>
-        </div>
-      )}
+      </div>
     </header>
   );
 }

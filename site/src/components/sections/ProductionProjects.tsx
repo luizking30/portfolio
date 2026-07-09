@@ -88,7 +88,7 @@ export default function ProductionProjects() {
                       className="object-cover"
                     />
                   )}
-                  <div className="absolute right-4 top-4 z-10 flex gap-2">
+                  <div className="absolute right-4 top-4 z-10 flex gap-2 opacity-100 transition-opacity duration-300 group-hover:opacity-100 sm:opacity-100">
                     {!isPlaceholder && (
                       <>
                         <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2.5 py-1 text-[10px] font-bold text-white backdrop-blur-sm">

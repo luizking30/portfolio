@@ -46,8 +46,8 @@ const aiTools = [
 export default function AIBadges() {
   return (
     <div className="relative w-full max-w-xl overflow-hidden">
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-blue-50/80 to-transparent dark:from-blue-950/80"></div>
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-blue-50/80 to-transparent dark:from-blue-950/80"></div>
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-blue-100/80 to-transparent dark:from-blue-900/80"></div>
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-blue-100/80 to-transparent dark:from-blue-900/80"></div>
       <div className="flex w-max gap-2 animate-marquee-slow">
         {[...aiTools, ...aiTools].map((ai, idx) => (
           <span

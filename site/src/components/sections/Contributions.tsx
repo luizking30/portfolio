@@ -154,7 +154,7 @@ export default function Contributions({ contributions }: ContributionsProps) {
             </div>
           )}
 
-          <div className="mt-3 flex items-center justify-end gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+          <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 sm:justify-end">
             <span>Menos</span>
             {levelClasses.map((cls, index) => (
               <div key={index} className={`h-[10px] w-[10px] rounded-sm ${cls}`} />
