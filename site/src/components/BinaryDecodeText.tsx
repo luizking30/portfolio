@@ -36,7 +36,7 @@ export default function BinaryDecodeText({
   const [chars, setChars] = useState<CharState[]>(() =>
     text.split("").map((c) => ({
       phase: "binary" as Phase,
-      display: c === " " ? " " : charToBinary(c),
+      display: "",
     }))
   );
   const [started, setStarted] = useState(false);
@@ -53,6 +53,10 @@ export default function BinaryDecodeText({
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          setChars(text.split("").map((c) => ({
+            phase: "binary" as Phase,
+            display: c === " " ? " " : charToBinary(c),
+          })));
           setStarted(true);
           observer.disconnect();
         }
