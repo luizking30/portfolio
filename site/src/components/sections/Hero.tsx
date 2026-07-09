@@ -90,7 +90,7 @@ export default function Hero({
         <MatrixRain opacity={0.04} />
         <CodeRain />
       <div className="mx-auto grid max-w-7xl items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
-        <div className="order-2 flex min-w-0 flex-col gap-6 lg:order-1">
+        <div className="order-1 flex min-w-0 flex-col gap-6 lg:order-1">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-900/20 dark:text-emerald-400">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
@@ -192,7 +192,7 @@ export default function Hero({
           </div>
         </div>
 
-        <div className="order-1 flex min-w-0 flex-col items-center justify-center gap-6 lg:order-2">
+        <div className="order-2 flex min-w-0 flex-col items-center justify-center gap-6 lg:order-2">
           <Parallax speed={0.4} className="relative">
             <div className="absolute inset-0 -z-10 rounded-full bg-blue-200/40 blur-3xl dark:bg-blue-500/20"></div>
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 opacity-50 blur-sm"></div>

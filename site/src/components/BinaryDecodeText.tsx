@@ -61,7 +61,7 @@ export default function BinaryDecodeText({
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
 
     if (containerRef.current) observer.observe(containerRef.current);
