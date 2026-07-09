@@ -115,7 +115,7 @@ export default function BinaryDecodeText({
         const isSpace = text[i] === " ";
         const isDecoded = c.phase === "text";
 
-        if (isSpace) return <span key={i}>&nbsp;&nbsp;</span>;
+        if (isSpace) return <span key={i}>&nbsp;</span>;
 
         return (
           <span
