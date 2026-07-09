@@ -50,22 +50,35 @@ export default function BinaryDecodeText({
       return;
     }
 
+    let started = false;
+
+    const begin = () => {
+      if (started) return;
+      started = true;
+      setChars(text.split("").map((c) => ({
+        phase: "binary" as Phase,
+        display: c === " " ? " " : charToBinary(c),
+      })));
+      setStarted(true);
+      observer.disconnect();
+      clearTimeout(fallback);
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setChars(text.split("").map((c) => ({
-            phase: "binary" as Phase,
-            display: c === " " ? " " : charToBinary(c),
-          })));
-          setStarted(true);
-          observer.disconnect();
-        }
+        if (entries[0].isIntersecting) begin();
       },
       { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
 
     if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
+
+    const fallback = setTimeout(begin, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallback);
+    };
   }, [text, reduced]);
 
   useEffect(() => {

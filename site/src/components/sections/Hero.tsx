@@ -116,7 +116,7 @@ export default function Hero({
             DISPONÍVEL PARA CONTRATAÇÃO
           </div>
 
-          <h1 className="overflow-hidden text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             <span className="animate-gradient-text bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-cyan-300 dark:to-blue-400">
               <BinaryDecodeText text={name} speed={250} stagger={80} startDelay={1200} />
             </span>
