@@ -40,7 +40,10 @@ export interface GitHubEvent {
 const GITHUB_USERNAME = "luizking30";
 const BASE_URL = "https://api.github.com";
 
-async function fetchGitHub<T>(endpoint: string): Promise<T | null> {
+async function fetchGitHub<T>(
+  endpoint: string,
+  cacheTime = 3600
+): Promise<T | null> {
   const token = process.env.GITHUB_TOKEN;
   const headers: Record<string, string> = {
     Accept: "application/vnd.github+json",
@@ -54,7 +57,7 @@ async function fetchGitHub<T>(endpoint: string): Promise<T | null> {
 
   const res = await fetch(`${BASE_URL}${endpoint}`, {
     headers,
-    next: { revalidate: 3600 },
+    next: { revalidate: cacheTime },
   });
 
   if (!res.ok) {
@@ -90,7 +93,8 @@ export async function getGitHubUser(): Promise<GitHubUser> {
 export async function getGitHubRepos(): Promise<GitHubRepo[]> {
   return (
     (await fetchGitHub<GitHubRepo[]>(
-      `/users/${GITHUB_USERNAME}/repos?sort=updated&direction=desc&per_page=100`
+      `/users/${GITHUB_USERNAME}/repos?sort=updated&direction=desc&per_page=100`,
+      60
     )) ?? []
   );
 }
