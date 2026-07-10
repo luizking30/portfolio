@@ -51,13 +51,6 @@ const projects: ProductionProject[] = [
     image: "https://sharkofertas.vercel.app/logo%20shark%20ofertas.png",
     techs: ["SaaS", "Ofertas", "Next.js", "Vercel"],
   },
-  {
-    name: "Em breve",
-    url: "",
-    description: "Novo projeto em produção em breve.",
-    gradient: "from-slate-400 to-slate-600",
-    techs: [],
-  },
 ];
 
 export default function ProductionProjects() {
