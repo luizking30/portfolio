@@ -5,7 +5,6 @@ import CircuitDivider from "@/components/CircuitDivider";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Technologies from "@/components/sections/Technologies";
-import Projects from "@/components/sections/Projects";
 import ProductionProjects from "@/components/sections/ProductionProjects";
 import Experience from "@/components/sections/Experience";
 import GitHubStats from "@/components/sections/GitHubStats";
@@ -15,10 +14,8 @@ import CommandPalette from "@/components/CommandPalette";
 import SystemStatus from "@/components/SystemStatus";
 import {
   getGitHubUser,
-  getGitHubRepos,
   getGitHubEvents,
   getTopLanguages,
-  getRecentRepos,
   getTotalCommits,
   getLastCommitInfo,
   getContributions,
@@ -36,12 +33,10 @@ const ABOUT_TEXT =
 
 export default async function Home() {
   const user = await getGitHubUser();
-  const repos = await getGitHubRepos();
   const events = await getGitHubEvents();
 
-  const languages = getTopLanguages(repos);
-  const recentRepos = getRecentRepos(repos, 4);
-  const totalCommits = await getTotalCommits(repos);
+  const languages = getTopLanguages([]);
+  const totalCommits = await getTotalCommits([]);
   const lastCommit = getLastCommitInfo(events);
   const contributions = await getContributions();
 
@@ -94,8 +89,6 @@ export default async function Home() {
         <CircuitDivider />
         <Technologies languages={languages} />
         <SectionDivider />
-        <Projects repos={recentRepos} githubUrl={user.html_url} />
-        <CircuitDivider />
         <ProductionProjects />
         <SectionDivider />
         <Experience />
@@ -106,7 +99,7 @@ export default async function Home() {
           publicRepos={user.public_repos}
           followers={user.followers}
           totalCommits={totalCommits}
-          recentProjects={recentRepos.length}
+          recentProjects={0}
           githubUrl={user.html_url}
           lastCommitRepo={lastCommit?.repo}
           lastCommitTime={lastCommit?.time}

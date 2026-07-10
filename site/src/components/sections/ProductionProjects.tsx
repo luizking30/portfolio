@@ -27,12 +27,13 @@ const projects: ProductionProject[] = [
     techs: ["SaaS", "Multi-tenant", "WhatsApp API", "IA"],
   },
   {
-    name: "SharkGestão ERP",
-    url: "https://www.sharkgestao.com/",
+    name: "Portfolio",
+    url: "https://luizamorimdev.vercel.app/",
     description:
-      "ERP SaaS para assistência técnica e lojas de informática: estoque, PDV, OS, clientes, relatórios e etiquetas.",
+      "Meu portfólio profissional: apresentação de projetos, experiência, tecnologias e formas de contato.",
     gradient: "from-indigo-500 via-blue-500 to-cyan-500",
-    techs: ["SaaS", "Multi-tenant", "ERP", "PDV"],
+    image: "/foto.jpeg",
+    techs: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
   },
   {
     name: "Shark Fitness",
