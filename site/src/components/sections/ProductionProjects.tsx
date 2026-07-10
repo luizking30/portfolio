@@ -43,6 +43,15 @@ const projects: ProductionProject[] = [
     techs: ["SaaS", "Multi-tenant", "Agendamento", "IA"],
   },
   {
+    name: "SharkOfertas",
+    url: "https://sharkofertas.vercel.app/",
+    description:
+      "Plataforma de ofertas e promoções: agregação de produtos, comparativo de preços e avisos de descontos em tempo real.",
+    gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+    image: "https://sharkofertas.vercel.app/logo%20shark%20ofertas.png",
+    techs: ["SaaS", "Ofertas", "Next.js", "Vercel"],
+  },
+  {
     name: "Em breve",
     url: "",
     description: "Novo projeto em produção em breve.",
