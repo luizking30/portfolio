@@ -34,30 +34,52 @@ export default function BinaryDecodeText({
   startDelay = 0,
 }: BinaryDecodeTextProps) {
   const [chars, setChars] = useState<CharState[]>(() =>
-    text.split("").map(() => ({
-      phase: "binary" as Phase,
-      display: "",
+    text.split("").map((c) => ({
+      phase: "text" as Phase,
+      display: c === " " ? " " : c,
     }))
   );
-  const [started, setStarted] = useState(false);
   const containerRef = useRef<HTMLSpanElement>(null);
   const reduced = usePrefersReducedMotion();
+  const startedRef = useRef(false);
 
   useEffect(() => {
     if (reduced) return;
 
-    let started = false;
-
     const begin = () => {
-      if (started) return;
-      started = true;
+      if (startedRef.current) return;
+      startedRef.current = true;
+
       setChars(text.split("").map((c) => ({
         phase: "binary" as Phase,
         display: c === " " ? " " : charToBinary(c),
       })));
-      setStarted(true);
-      observer.disconnect();
-      clearTimeout(fallback);
+
+      const phases: Phase[] = ["binary", "hex", "text"];
+      const timers: ReturnType<typeof setTimeout>[] = [];
+
+      text.split("").forEach((char, i) => {
+        if (char === " ") return;
+
+        const baseDelay = startDelay + i * stagger;
+
+        phases.forEach((phase, phaseIdx) => {
+          if (phaseIdx === 0) return;
+
+          const t = setTimeout(() => {
+            setChars((prev) => {
+              const next = [...prev];
+              next[i] = {
+                phase,
+                display: phase === "hex" ? charToHex(char) : char,
+              };
+              return next;
+            });
+          }, baseDelay + phaseIdx * speed);
+
+          timers.push(t);
+        });
+      });
     };
 
     const observer = new IntersectionObserver(
@@ -75,44 +97,7 @@ export default function BinaryDecodeText({
       observer.disconnect();
       clearTimeout(fallback);
     };
-  }, [text, reduced]);
-
-  useEffect(() => {
-    if (!started) return;
-
-    if (reduced) return;
-
-    const phases: Phase[] = ["binary", "hex", "text"];
-    const timers: ReturnType<typeof setTimeout>[] = [];
-
-    text.split("").forEach((char, i) => {
-      if (char === " ") return;
-
-      const baseDelay = startDelay + i * stagger;
-
-      phases.forEach((phase, phaseIdx) => {
-        if (phaseIdx === 0) return;
-
-        const t = setTimeout(() => {
-          setChars((prev) => {
-            const next = [...prev];
-            next[i] = {
-              phase,
-              display:
-                phase === "hex"
-                  ? charToHex(char)
-                  : char,
-            };
-            return next;
-          });
-        }, baseDelay + phaseIdx * speed);
-
-        timers.push(t);
-      });
-    });
-
-    return () => timers.forEach(clearTimeout);
-  }, [started, text, speed, stagger, startDelay, reduced]);
+  }, [text, reduced, speed, stagger, startDelay]);
 
   return (
     <span
@@ -123,26 +108,26 @@ export default function BinaryDecodeText({
       {reduced
         ? text
         : chars.map((c, i) => {
-        const isSpace = text[i] === " ";
-        const isDecoded = c.phase === "text";
+            const isSpace = text[i] === " ";
+            const isDecoded = c.phase === "text";
 
-        if (isSpace) return <span key={i}>&nbsp;</span>;
+            if (isSpace) return <span key={i}>&nbsp;</span>;
 
-        return (
-          <span
-            key={i}
-            className="inline-block transition-all duration-200 ease-out"
-            style={{
-              opacity: isDecoded ? 1 : 0.7,
-              color: isDecoded ? undefined : "var(--decode-color, rgb(59 130 246))",
-              fontSize: isDecoded ? "1em" : "0.7em",
-              letterSpacing: isDecoded ? "normal" : "0.05em",
-            }}
-          >
-            {c.display}
-          </span>
-        );
-      })}
+            return (
+              <span
+                key={i}
+                className="inline-block transition-all duration-200 ease-out"
+                style={{
+                  opacity: isDecoded ? 1 : 0.7,
+                  color: isDecoded ? undefined : "var(--decode-color, rgb(59 130 246))",
+                  fontSize: isDecoded ? "1em" : "0.7em",
+                  letterSpacing: isDecoded ? "normal" : "0.05em",
+                }}
+              >
+                {c.display}
+              </span>
+            );
+          })}
     </span>
   );
 }
