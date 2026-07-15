@@ -24,7 +24,6 @@ import AIBadges from "@/components/AIBadges";
 import MatrixRain from "@/components/MatrixRain";
 import CodeRain from "@/components/CodeRain";
 import NeuralNetwork from "@/components/NeuralNetwork";
-import BinaryDecodeText from "@/components/BinaryDecodeText";
 
 interface HeroProps {
   name: string;
@@ -112,11 +111,11 @@ export default function Hero({
 
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             <span className="animate-gradient-text bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-cyan-300 dark:to-blue-400">
-              <BinaryDecodeText text={name} speed={250} stagger={80} startDelay={1200} />
+              {name}
             </span>
           </h1>
           <h2 className="text-xl font-semibold text-blue-600 dark:text-blue-400 sm:text-2xl">
-            <BinaryDecodeText text={title} speed={200} stagger={60} startDelay={2000} />
+            {title}
           </h2>
           <TerminalWindow
             startDelay={1500}
